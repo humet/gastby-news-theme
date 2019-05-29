@@ -1,21 +1,49 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from 'gatsby'
+import get from 'lodash/get'
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import ArticlePreview from '../components/article-preview'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+class IndexPage extends React.Component {
+  render() {
+    const posts = get(this, 'props.data.allContentfulPost.edges')
+    
+    return (
+      <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <h1>Recent Articles</h1>
+      <ul className="article-list">
+              {posts.map(({ node }) => {
+                return (
+                  <li key={node.slug}>
+                    <ArticlePreview article={node} />
+                  </li>
+                )
+              })}
+            </ul>
+      </Layout>
+    )
+  }
+}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query HomeQuery {
+    allContentfulPost(limit:10) {
+      edges {
+        node {
+          title
+          slug
+          featuredImage {
+            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_tracedSVG
+             }
+          }
+        }
+      }
+    }
+  }
+`
