@@ -32,13 +32,13 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulPost(limit:10) {
+    allContentfulPost(limit: 10, sort: { fields: [publishedOn], order: DESC }) {
       edges {
         node {
           title
           slug
           featuredImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 430, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
              }
           }
