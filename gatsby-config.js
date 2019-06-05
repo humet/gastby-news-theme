@@ -11,8 +11,10 @@ contentfulConfig = {
   accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
 }
 
+// Put variables into an abject
 const { spaceId, accessToken } = contentfulConfig
 
+// Check if the variables exist
 if (!spaceId || !accessToken) {
   throw new Error(
     'Contentful spaceId and the delivery token need to be provided.'
