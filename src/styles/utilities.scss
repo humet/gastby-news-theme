@@ -1,0 +1,5 @@
+@include breakpoint(sm) {
+    .hideMobile {
+        display: none !important;
+    }
+}

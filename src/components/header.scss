@@ -1,0 +1,20 @@
+@import '../styles/main.scss';
+
+header {
+    .svg-inline--fa {
+        margin-left: 7px;
+    }
+
+    a {
+        color: $primary;
+    }
+    @include breakpoint(sm) {
+        .order-last {
+            order: 99;
+        }
+
+        .brand {
+            border-bottom: $border;
+        }
+    }
+}

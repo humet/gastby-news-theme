@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,400i,700,700i&display=swap');
+
 html {
-  font-family: sans-serif;
+  font-family: 'Barlow', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -185,7 +187,6 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -200,7 +201,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: 'Barlow', sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -218,7 +219,6 @@ img {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
 }
 h1 {
   margin-left: 0;
@@ -619,4 +619,9 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+
+.container {
+  max-width: 980px;
+  padding: 0 15px;
 }

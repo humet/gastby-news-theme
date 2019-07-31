@@ -1,33 +1,18 @@
-let contentfulConfig
-
-try {
-  // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
-} catch (_) {}
-
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
-
-// Put variables into an abject
-const { spaceId, accessToken } = contentfulConfig
-
-// Check if the variables exist
-if (!spaceId || !accessToken) {
-  throw new Error(
-    'Contentful spaceId and the delivery token need to be provided.'
-  )
-}
-
 module.exports = {
   siteMetadata: {
-    title: `Social Chain Editorial`,
+    title: `Full Time Devils`,
     description: `Base theme for the Social Chain Media Websites`,
     author: `@humet`,
   },
   plugins: [
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        baseUrl: "fulltimedevils.wpengine.com",
+        protocol: "http",
+        hostingWPCOM: false,
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -42,12 +27,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-contentful`,
-      options: contentfulConfig,
-    },
-    {
       resolve: "gatsby-plugin-netlify-cache"
     },
+    `gatsby-plugin-sass`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

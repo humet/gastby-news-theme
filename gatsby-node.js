@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allContentfulPost {
+            allWordpressPost {
               edges {
                 node {
                   title
@@ -26,7 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        const articles = result.data.allContentfulPost.edges
+        const articles = result.data.allWordpressPost.edges
         articles.forEach((article, index) => {
           createPage({
             path: `/${article.node.slug}/`,

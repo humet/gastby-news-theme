@@ -1,0 +1,84 @@
+@import '../styles/main.scss';
+
+nav {
+    position: relative;
+
+    @include breakpoint(sm) {
+        max-width: 1000px;
+        width: 100%;
+        margin: 15px auto 0;
+        padding: 0 30px;
+    }
+
+    ul {
+        white-space: nowrap; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @include breakpoint(sm) {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    li {
+        display: inline-block;
+        text-transform: uppercase;
+        flex-grow: 1;
+        text-align: center;
+
+        &:first-child {
+            margin-left: 20px;
+
+            @include breakpoint(sm) {
+                margin-left: 0;
+            }
+        }
+
+        &:last-child {
+            margin-right: 150px;
+
+            @include breakpoint(sm) {
+                margin-right: 0;
+            }
+        }
+
+        @include breakpoint(sm) {
+            border-right: $border;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
+    a {
+        padding: 10px;
+        display: block;
+        color: $body !important;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .overlay {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 25%;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%);
+
+        @include breakpoint(sm) {
+            display: none;
+        }
+    }
+}
