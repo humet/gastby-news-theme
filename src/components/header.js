@@ -76,7 +76,7 @@ const Header = ({ siteTitle }) => (
       fontWeight: `bold`,
       fontStyle: `italic`,
       borderBottom: ThemeStyles.borders.primary,
-    }} className="hideMobile">
+    }} className="hideDesktop">
       <Container>
         FTD Merchandise
       </Container>

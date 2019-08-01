@@ -13,8 +13,8 @@ exports.createPages = ({ graphql, actions }) => {
             allWordpressPost {
               edges {
                 node {
-                  title
                   slug
+                  id
                 }
               }
             }
@@ -32,7 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/${article.node.slug}/`,
             component: articlePost,
             context: {
-              slug: article.node.slug
+              id: article.node.id
             },
           })
         })

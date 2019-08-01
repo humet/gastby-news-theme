@@ -1,6 +1,14 @@
 @import '../styles/main.scss';
 
 header {
+    .container {
+        padding: 0 30px;
+
+        @include breakpoint(sm) {
+            padding: 0;
+        }
+    }
+
     .svg-inline--fa {
         margin-left: 7px;
     }

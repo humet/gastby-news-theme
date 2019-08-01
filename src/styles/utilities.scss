@@ -1,4 +1,10 @@
 @include breakpoint(sm) {
+    .hideDesktop {
+        display: none !important;
+    }
+}
+
+@include breakpoint(0, 768) {
     .hideMobile {
         display: none !important;
     }
