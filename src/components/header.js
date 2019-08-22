@@ -2,14 +2,13 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Container from "./container"
+import QuickMenu from "./quickmenu"
 import Nav from "./nav"
 import "./header.scss"
 import ThemeStyles from '../styles/theme.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import { faSearch,  faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons'
 import Logo from '../images/fulltimedevils-logo.svg';
-
 
 const Header = ({ siteTitle }) => (
   <header
@@ -22,7 +21,7 @@ const Header = ({ siteTitle }) => (
           display: `flex`,
           justifyContent: `space-between`,
           alignItems: `center`,
-          paddingBottom: `15px`
+          paddingBottom: `15px`,
         }}>
           <div>
             <Link to="/" >
@@ -32,9 +31,7 @@ const Header = ({ siteTitle }) => (
           <div style={{
             color: ThemeStyles.colour.primary,
           }}>
-            <a href="https://store.fulltimedevils.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faShoppingBasket} size="2x" /></a>
-            <FontAwesomeIcon icon={faSearch} size="2x" />
-            <FontAwesomeIcon icon={faBars} size="2x" />
+            <QuickMenu />
           </div>
         </div>
     </Container>
@@ -78,7 +75,7 @@ const Header = ({ siteTitle }) => (
       borderBottom: ThemeStyles.borders.primary,
     }} className="hideDesktop">
       <Container>
-        FTD Merchandise
+        <a href="https://shop.fulltimedevils.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>FTD Merchandise</a>
       </Container>
     </div>
     <Nav />

@@ -619,12 +619,14 @@ pre tt:after {
   }
 }
 
-main section {
+main section,
+footer section {
   padding: 30px;
+  background: #fff;
 }
 
 @include breakpoint(sm) {
-  .wrapper {
+  .wrapper, footer {
     background: #EFEFF4;
   }
 }

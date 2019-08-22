@@ -1,0 +1,26 @@
+@import '../styles/main.scss';
+
+.footer-nav {
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    padding-right: 15px;
+    
+    @include breakpoint(sm) {
+      border-right: #000 1px solid;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

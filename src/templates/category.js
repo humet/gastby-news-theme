@@ -1,29 +1,30 @@
 import React from "react"
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CategoryBlock from '../components/categoryblock'
 
-class IndexPage extends React.Component {
-  render() {
-    const posts = get(this, 'props.data.allWordpressPost.edges')
-    
-    return (
-      <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <CategoryBlock articles={posts} type="featured" title="Featured" />
-      </Layout>
-    )
-  }
+const CategoryTemplate = (props) => {
+  const posts = props.data.allWordpressPost.edges;
+  return (
+    <Layout>
+      <SEO title={props.pageContext.name} />
+      <CategoryBlock articles={posts} type="featured" title={props.pageContext.name} />
+    </Layout>
+  )
 }
 
-export default IndexPage
+export default CategoryTemplate
 
 export const pageQuery = graphql`
-  query HomeQuery {
-    allWordpressPost(limit: 10, sort: { fields: [date], order: DESC }) {
+  query category($slug: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allWordpressPost(filter:{categories:{elemMatch: {slug: {eq: $slug}}}}) {
       edges {
         node {
           title

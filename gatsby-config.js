@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Full Time Devils`,
@@ -11,7 +15,17 @@ module.exports = {
         baseUrl: "fulltimedevils.wpengine.com",
         protocol: "http",
         hostingWPCOM: false,
+        verboseOutput: false,
       },
+    },
+    {
+      resolve: `gatsby-source-google-analytics-reporting-api`,
+      options: {
+        email: process.env.CLIENT_EMAIL,
+        key: process.env.GOOGLE_API_KEY,
+        viewId: `134027711`,
+        startDate: '7daysAgo',
+      }
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -32,6 +46,21 @@ module.exports = {
       resolve: "gatsby-plugin-netlify-cache"
     },
     `gatsby-plugin-sass`,
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`],
+        // How to resolve each field`s value for a supported node type
+        resolvers: {
+          // For any node of type allWordpressPost, list how to resolve the fields` values
+          wordpress__POST: {
+            title: node => node.title,
+            path: node => node.path,
+          },
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

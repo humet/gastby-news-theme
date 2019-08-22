@@ -1,6 +1,6 @@
 @import '../styles/main.scss';
 
-nav {
+nav.main-nav {
     position: relative;
 
     @include breakpoint(sm) {

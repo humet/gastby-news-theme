@@ -4,4 +4,21 @@
     p {
         margin-bottom: 0.5rem;
     }
+
+    &__dateauthor {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(sm) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    @include breakpoint(sm) {
+        &__date {
+            order: 2;
+        }
+    }
 }

@@ -9,16 +9,6 @@ import SEO from "../components/seo"
 import ThemeStyles from '../styles/theme.js'
 import "./article.scss"
 
-function PopPosts(props) {
-  const posts = props.posts;
-  const postList = posts.map((post) =>
-    <li key={post.node.path}>{post.node.path}</li>
-  )
-  return (
-    <ul>{postList}</ul>
-  )
-}
-
 export const ArticleTemplate = ({
   content,
   categories,
@@ -26,8 +16,7 @@ export const ArticleTemplate = ({
   excerpt,
   date,
   author,
-  featuredimage,
-  popularPosts
+  featuredimage
 }) => {
   return (
     <div>
@@ -52,7 +41,7 @@ export const ArticleTemplate = ({
         </div>
         <hr />
         <div className="row">
-        <div className="col-8">
+        <div className="col-12">
         {featuredimage ? (
           <div style={{marginBottom: `15px`}}>
             <Img fluid={featuredimage.localFile.childImageSharp.fluid} alt={featuredimage.alt_text} backgroundColor={ThemeStyles.colour.primary} />
@@ -68,34 +57,22 @@ export const ArticleTemplate = ({
                 __html: content,
               }} />
         </div>
-        <aside className="col-4 hideMobile">
-          <h2>Popular Posts</h2>
-          <PopPosts posts={popularPosts} />
-        </aside>
         </div>
-    </section>
-    <section style={{background: ThemeStyles.colour.primary}}>
-      <h2 style={{ textTransform: `uppercase`, color: `#fff`, borderBottom: `#fff solid 3px`, paddingBottom: `15px`}}>Sponsored Content</h2>
     </section>
     </div>
   )
 }
 
 const Article = ({ data }) => {
-  const { wordpressPost: post, allPageViews: popularPosts } = data
-  const description = post.excerpt.replace(/<[^>]*>?/gm, '');
+  const { wordpressPage: post } = data
+
   return (
     <Layout>
-      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} description={description} />
+       <SEO title={post.title} />
       <ArticleTemplate
         content={post.content}
-        excerpt={post.excerpt}
-        categories={post.categories}
         title={post.title}
-        date={post.date}
-        author={post.author}
         featuredimage={post.featured_media}
-        popularPosts={popularPosts.edges}
       />
     </Layout>
   )
@@ -110,38 +87,17 @@ Article.propTypes = {
 export default Article
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query PageByID($id: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allPageViews(limit:10, sort:{fields:totalCount, order: DESC}) {
-      edges {
-        node {
-          path
-          totalCount
-        }
-      }
-    }
-    wordpressPost(id: { eq: $id }) {
+    wordpressPage(id: { eq: $id }) {
       id
       title
       slug
       content
-      date(formatString: "D MMMM YYYY")
-      categories {
-        name
-        slug
-      }
-      excerpt
-      author {
-        name
-        slug
-        avatar_urls {
-          wordpress_96
-        }
-      }
       featured_media {
         alt_text
         caption

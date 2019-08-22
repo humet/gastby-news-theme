@@ -3,7 +3,8 @@ const ThemeStyles = {
         background: '#fff',
         primary: '#D83027',
         light: '#fff',
-        dark: '#000'
+        dark: '#000',
+        body: '#000'
     },
     borders: {
         primary: '1px solid #979797'

@@ -1,0 +1,32 @@
+@import '../styles/main.scss';
+
+.searchOverlay {
+    a {
+        color: #fff !important;
+        display: block;
+        padding: 15px;
+        margin: 0;
+        background: darken($primary, 15%);
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover {
+        background: darken($primary, 30%);
+    }
+
+    ul {
+        margin: 0;
+        position: absolute;
+        top: 100%; 
+        width: 90%;
+        display: block;
+        left: 5%;
+    }
+
+    li {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
