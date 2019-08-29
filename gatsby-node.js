@@ -34,9 +34,11 @@ exports.onCreateNode = ({ node, actions }) => {
 const createPosts = require('./gatsby/createPosts');
 const createPages = require('./gatsby/createPages');
 const createCategories = require('./gatsby/createCategories');
+const createAuthors = require('./gatsby/createAuthors');
 
 exports.createPages = async ({ actions, graphql }) => {
   await createPosts({ actions, graphql });
   await createPages({ actions, graphql });
   await createCategories({ actions, graphql });
+  await createAuthors({ actions, graphql });
 }

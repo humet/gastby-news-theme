@@ -1,0 +1,14 @@
+@import '../styles/main.scss';
+
+.author {
+  text-align: center;
+
+  @include breakpoint(md) {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .social-icon {
+    margin: 0 5px 15px;
+  }
+}

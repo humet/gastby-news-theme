@@ -1,0 +1,45 @@
+@import '../styles/main.scss';
+
+.posts::before,
+.posts::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+
+  > div {
+    padding: 0 15px;
+  }
+
+  &__list {
+    > div {
+      @include breakpoint(sm) {
+        width: 50%;
+      }
+
+      @include breakpoint(md) {
+        width: 33.33%;
+      }
+    }
+  }
+
+  &__featured {
+    column-count: 2;
+    column-fill: balance;
+    display: block;
+
+    > div {
+      display: inline-block;
+    }
+
+    > div:first-child {
+      height: 800px;
+    }
+  }
+}

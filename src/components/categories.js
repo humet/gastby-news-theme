@@ -22,7 +22,7 @@ export default ({ categories }) => (
             fontWeight: `bold`,
             textDecoration: `none`,
             }}>
-            {category.name}
+            <span dangerouslySetInnerHTML={{__html: category.name}} />
             <CategoryComma length={categories.length} />
         </Link>
         ))}

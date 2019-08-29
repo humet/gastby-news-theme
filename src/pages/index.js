@@ -13,7 +13,7 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <CategoryBlock articles={posts} type="featured" title="Featured" />
+        <CategoryBlock sticky articles={posts} type="featured" title="Featured" />
       </Layout>
     )
   }
@@ -23,26 +23,10 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allWordpressPost(limit: 10, sort: { fields: [date], order: DESC }) {
+    allWordpressPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {
-          title
-          slug
-          excerpt
-          categories {
-            name
-            slug
-          }
-          featured_media {
-            alt_text
-            localFile{
-              childImageSharp {
-                fluid(maxWidth: 650) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-          }
+          ...CategoryBlockFields
         }
       }
     }

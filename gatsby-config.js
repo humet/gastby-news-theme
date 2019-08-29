@@ -16,6 +16,7 @@ module.exports = {
         protocol: "http",
         hostingWPCOM: false,
         verboseOutput: false,
+        useACF: true,
       },
     },
     {

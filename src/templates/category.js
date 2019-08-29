@@ -10,7 +10,7 @@ const CategoryTemplate = (props) => {
   return (
     <Layout>
       <SEO title={props.pageContext.name} />
-      <CategoryBlock articles={posts} type="featured" title={props.pageContext.name} />
+      <CategoryBlock articles={posts} type="list" title={props.pageContext.name} />
     </Layout>
   )
 }
