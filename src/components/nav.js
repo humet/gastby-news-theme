@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from 'gatsby'
+import UrlParts from "../hooks/getUrlParts.js"
 
 import './nav.scss'
 
@@ -12,7 +13,7 @@ const Nav = () => (
                 node {
                   items {
                     title
-                    object_slug
+                    object_id
                     type
                     url
                   }
@@ -25,11 +26,11 @@ const Nav = () => (
             <nav className="main-nav">
             <ul>
                 {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
-                    <li key={item.object_slug}>
-                    { item.type === "post_type" ? (
-                        <Link to={`/${item.object_slug}`}>{item.title}</Link>
+                    <li key={item.object_id}>
+                    { item.type === "post_type" || item.type === "taxonomy" ? (
+                        <Link to={UrlParts(item.url).pathname}>{item.title}</Link>
                     ) : (
-                        <a href={item.url}>{item.title}</a>
+                        <a href={item.object_slug}>{item.title}</a>
                     ) }
                     </li>
                 ))}

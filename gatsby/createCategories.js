@@ -34,7 +34,7 @@ module.exports = async ({ actions, graphql }) => {
     const categories = result.data.allWordpressCategory.edges;
     categories.forEach(cat => {
       createPage({
-        path: `/${cat.node.slug}/`,
+        path: `/category/${cat.node.slug}/`,
         component: categoriesTemplate,
         context: {
           slug: cat.node.slug,

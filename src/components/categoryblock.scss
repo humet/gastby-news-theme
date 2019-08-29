@@ -15,6 +15,7 @@
 
   > div {
     padding: 0 15px;
+    width: 100%;
   }
 
   &__list {
@@ -30,16 +31,18 @@
   }
 
   &__featured {
-    column-count: 2;
-    column-fill: balance;
-    display: block;
+    @include breakpoint(md) {
+      display: grid;
+      grid-template-columns: repeat( auto-fill, minmax( 50%, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+      grid-auto-rows: 3; /* [3] Set the height for implicitly-created row track */
 
-    > div {
-      display: inline-block;
-    }
-
-    > div:first-child {
-      height: 800px;
+      > div:first-child {
+        grid-row-end: span 3;
+  
+        .gatsby-image-wrapper {
+          height: 674px;
+        }
+      }
     }
   }
 }

@@ -13,7 +13,7 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <CategoryBlock sticky articles={posts} type="featured" title="Featured" />
+        <CategoryBlock sticky articles={posts} type="featured" title="Featured News" />
       </Layout>
     )
   }

@@ -7,7 +7,8 @@ const ThemeStyles = {
         body: '#000'
     },
     borders: {
-        primary: '1px solid #979797'
+        primary: '1px solid #979797',
+        light: '1px solid #D8D8D8'
     }
 }
 

@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { slide as Menu } from 'react-burger-menu'
+import UrlParts from "../hooks/getUrlParts.js"
 import ThemeStyles from '../styles/theme.js'
 import "./mainnav.scss"
 
@@ -50,7 +51,7 @@ const MainNav = (props) => (
                 node {
                   items {
                     title
-                    object_slug
+                    object_id
                     type
                     url
                   }
@@ -63,9 +64,9 @@ const MainNav = (props) => (
             <Menu customBurgerIcon={ false } className={ "full-nav" } right styles={styles} isOpen={ props.menuOpen }>
               
                 {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
-                  <div>
-                  { item.type === "post_type" ? (
-                  <Link id="{item.object_slug}" key={item.object_slug} to={`/${item.object_slug}`}>{item.title}</Link>
+                  <div key={item.object_id}>
+                  { item.type === "post_type" || item.type === "taxonomy"  ? (
+                  <Link id="{item.object_id}" to={UrlParts(item.url).pathname}>{item.title}</Link>
                   ) : (
                     <a href={item.url}>{item.title}</a>
                   ) }

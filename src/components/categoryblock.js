@@ -5,6 +5,7 @@ import ArticlePreview from './article-preview'
 import { graphql } from 'gatsby'
 
 import './categoryblock.scss'
+import ThemeStyles from '../styles/theme';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class IndexPage extends React.Component {
     return (
       <section>
         {title &&
-        <h2 dangerouslySetInnerHTML={{__html: title}} />
+        <h2 dangerouslySetInnerHTML={{__html: title}} style={{textTransform: `uppercase`, borderBottom: ThemeStyles.borders.light, paddingBottom: 15}} />
         }
         <div className={`posts posts__${this.props.type}`}>
           {articles

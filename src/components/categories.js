@@ -17,7 +17,7 @@ export default ({ categories }) => (
     <div className="small" style={{ textTransform: `uppercase` }}>
         {
         categories.map(category => (
-        <Link key={category.name} to={`/${category.slug}/`} style={{
+        <Link key={category.name} to={`/category/${category.slug}/`} style={{
             color: ThemeStyles.colour.primary,
             fontWeight: `bold`,
             textDecoration: `none`,
