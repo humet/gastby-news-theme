@@ -1,6 +1,5 @@
 const UrlParts = function getUrlParts(url) {
-  var a = document.createElement('a');
-  a.href = url;
+  var a = new URL(url)
 
   return {
       href: a.href,
