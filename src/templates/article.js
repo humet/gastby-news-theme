@@ -71,11 +71,11 @@ export const ArticleTemplate = ({
 }
 
 const Article = ({ data }) => {
-  const { wordpressPost: post, wordpressWpUsers: author} = data
+  const { wordpressPost: post, wordpressWpUsers: author, site: siteMeta} = data
   const description = post.excerpt.replace(/<[^>]*>?/gm, '');
   return (
     <Layout>
-      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} author={author.acf.social_media_handles.twitter} description={description} image={post.featured_media.localFile.childImageSharp.fluid.src} />
+      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} author={author.acf.social_media_handles.twitter} description={description} image={post.featured_media ? post.featured_media.localFile.childImageSharp.fluid.src : siteMeta.siteMetadata.image} />
       <ArticleTemplate
         content={post.content}
         excerpt={post.excerpt}
@@ -102,6 +102,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        image
       }
     }
     wordpressPost(id: { eq: $id }) {

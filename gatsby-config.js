@@ -9,7 +9,8 @@ module.exports = {
     title: `Full Time Devils`,
     description: `The World's Biggest Unoffical Manchester United Fan Channel`,
     domain: `https://www.fulltimedevils.com`,
-    author: `fulltimedevils`
+    author: `fulltimedevils`,
+    image: `/static/imageplaceholder.jpg`
   },
   plugins: [
     {
