@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+console.log(process.env.GOOGLE_API_KEY)
+
 module.exports = {
   siteMetadata: {
     title: `Full Time Devils`,
