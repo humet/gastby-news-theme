@@ -24,6 +24,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-NJN3HTT",
+        includeInDevelopment: false,
+      },
+    },
+    {
       resolve: `gatsby-source-google-analytics-reporting-api`,
       options: {
         email: process.env.CLIENT_EMAIL,

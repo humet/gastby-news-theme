@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from 'gatsby'
-
+import UrlParts from "../hooks/getUrlParts.js"
 import Container from "./container"
 
 import Logo from '../images/fulltimedevils-logo.svg'
@@ -37,8 +37,8 @@ const Footer = ({ siteTitle }) => (
             <ul>
                 {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
                     <li key={item.object_slug}>
-                    { item.type === "post_type" ? (
-                        <Link to={`/${item.object_slug}`}>{item.title}</Link>
+                    { item.type === "post_type" || item.type === "taxonomy" ? (
+                        <Link to={UrlParts(item.url).pathname}>{item.title}</Link>
                     ) : (
                         <a href={item.url}>{item.title}</a>
                     ) }
