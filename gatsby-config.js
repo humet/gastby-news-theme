@@ -7,8 +7,9 @@ const googleApiKey = process.env.GOOGLE_API_KEY.replace(new RegExp("\\\\n", "\g"
 module.exports = {
   siteMetadata: {
     title: `Full Time Devils`,
-    description: `Base theme for the Social Chain Media Websites`,
-    author: `@humet`,
+    description: `The World's Biggest Unoffical Manchester United Fan Channel`,
+    domain: `https://www.fulltimedevils.com`,
+    author: `fulltimedevils`
   },
   plugins: [
     {

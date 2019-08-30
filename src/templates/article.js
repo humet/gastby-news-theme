@@ -17,8 +17,7 @@ export const ArticleTemplate = ({
   excerpt,
   date,
   author,
-  featuredimage,
-  popularPosts
+  featuredimage
 }) => {
   return (
     <div>
@@ -72,11 +71,11 @@ export const ArticleTemplate = ({
 }
 
 const Article = ({ data }) => {
-  const { wordpressPost: post } = data
+  const { wordpressPost: post, wordpressWpUsers: author} = data
   const description = post.excerpt.replace(/<[^>]*>?/gm, '');
   return (
     <Layout>
-      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} description={description} />
+      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} author={author.acf.social_media_handles.twitter} description={description} image={post.featured_media.localFile.childImageSharp.fluid.src} />
       <ArticleTemplate
         content={post.content}
         excerpt={post.excerpt}
@@ -99,7 +98,7 @@ Article.propTypes = {
 export default Article
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query BlogPostByID($id: String!, $authorid: String!) {
     site {
       siteMetadata {
         title
@@ -132,6 +131,13 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
+        }
+      }
+    }
+    wordpressWpUsers(id: { eq: $authorid }) {
+      acf {
+        social_media_handles {
+          twitter
         }
       }
     }

@@ -29,6 +29,9 @@ module.exports = async ({ actions, graphql }) => {
             fields {
               deploy
             }
+            author {
+              id
+            }
           }
         }
       }
@@ -49,6 +52,7 @@ module.exports = async ({ actions, graphql }) => {
           component: postTemplate,
           context: {
             id: edge.node.id,
+            authorid: edge.node.author.id
           }
         })
       }
