@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-console.log(process.env.GOOGLE_API_KEY)
+const googleApiKey = process.env.GOOGLE_API_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
 
 module.exports = {
   siteMetadata: {
@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-google-analytics-reporting-api`,
       options: {
         email: process.env.CLIENT_EMAIL,
-        key: process.env.GOOGLE_API_KEY,
+        key: googleApiKey,
         viewId: `134027711`,
         startDate: '7daysAgo',
       }

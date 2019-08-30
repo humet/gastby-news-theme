@@ -5,19 +5,10 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import Categories from '../components/categories'
 import SEO from "../components/seo"
+//import PopPosts from "../hooks/getPopPosts"
 
 import ThemeStyles from '../styles/theme.js'
 import "./article.scss"
-
-function PopPosts(props) {
-  const posts = props.posts;
-  const postList = posts.map((post) =>
-    <li key={post.node.path}>{post.node.path}</li>
-  )
-  return (
-    <ul>{postList}</ul>
-  )
-}
 
 export const ArticleTemplate = ({
   content,
@@ -69,8 +60,7 @@ export const ArticleTemplate = ({
               }} />
         </div>
         <aside className="col-4 hideMobile">
-          <h2>Popular Posts</h2>
-          <PopPosts posts={popularPosts} />
+          
         </aside>
         </div>
     </section>
@@ -82,7 +72,7 @@ export const ArticleTemplate = ({
 }
 
 const Article = ({ data }) => {
-  const { wordpressPost: post, allPageViews: popularPosts } = data
+  const { wordpressPost: post } = data
   const description = post.excerpt.replace(/<[^>]*>?/gm, '');
   return (
     <Layout>
@@ -95,7 +85,6 @@ const Article = ({ data }) => {
         date={post.date}
         author={post.author}
         featuredimage={post.featured_media}
-        popularPosts={popularPosts.edges}
       />
     </Layout>
   )
@@ -114,14 +103,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-      }
-    }
-    allPageViews(limit:10, sort:{fields:totalCount, order: DESC}) {
-      edges {
-        node {
-          path
-          totalCount
-        }
       }
     }
     wordpressPost(id: { eq: $id }) {
