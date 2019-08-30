@@ -8,9 +8,9 @@ module.exports = {
   siteMetadata: {
     title: `Full Time Devils`,
     description: `The World's Biggest Unoffical Manchester United Fan Channel`,
-    domain: `https://www.fulltimedevils.com`,
-    author: `fulltimedevils`,
-    image: `/static/imageplaceholder.jpg`
+    domain: `https://www.fulltimedevils.com`, // No trailing slash
+    author: `fulltimedevils`, // No @ symbol
+    image: `/images/facebookopengraph.jpg` 
   },
   plugins: [
     {

@@ -27,6 +27,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.11",
+    "react-dfp": "^0.14.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "yarn": "^1.17.3"

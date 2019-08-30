@@ -1,4 +1,5 @@
 import React from 'react'
+import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
@@ -21,6 +22,11 @@ export const ArticleTemplate = ({
 }) => {
   return (
     <div>
+    <DFPSlotsProvider dfpNetworkId="21685689509">
+      <div className="desktop-ads">
+        <AdSlot sizes={[[728, 90], [300, 250]]} adUnit="article_page_atf" />
+      </div>
+    </DFPSlotsProvider>
     <section>
       <div className="meta">
         {categories && categories.length ? (
@@ -59,7 +65,11 @@ export const ArticleTemplate = ({
               }} />
         </div>
         <aside className="col-4 hideMobile">
-          
+        <DFPSlotsProvider dfpNetworkId="21685689509">
+          <div className="desktop-ads">
+            <AdSlot sizes={[[300, 600], [300, 250]]} adUnit="article_page_sidebar" />
+          </div>
+        </DFPSlotsProvider>
         </aside>
         </div>
     </section>

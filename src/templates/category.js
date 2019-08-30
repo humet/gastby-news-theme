@@ -30,6 +30,7 @@ export const pageQuery = graphql`
           title
           slug
           excerpt
+          sticky
           categories {
             name
             slug
