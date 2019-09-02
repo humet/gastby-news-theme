@@ -12,7 +12,7 @@ class IndexPage extends React.Component {
     
     return (
       <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO title="Home" />
         <CategoryBlock sticky articles={posts} type="featured" title="Featured News" count={3} />
         <CategoryBlock articles={posts} type="list" title="Latest News" count={6} />
         <CategoryBlock articles={posts} type="list" title="Match Reviews" count={6} category={4} />
@@ -25,7 +25,15 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allWordpressPost(sort: { fields: [date], order: DESC }) {
+    allWordpressPost(
+      sort: { fields: [date], order: DESC }
+      filter: {
+        fields: {
+          deploy: {eq: true}
+        }
+      }
+    )
+  {
       edges {
         node {
           ...CategoryBlockFields

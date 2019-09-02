@@ -24,7 +24,16 @@ export const pageQuery = graphql`
         title
       }
     }
-    allWordpressPost(filter:{categories:{elemMatch: {slug: {eq: $slug}}}}) {
+    allWordpressPost(
+      filter:
+      { 
+        categories: {elemMatch: {slug: {eq: $slug}}}
+        fields: {
+          deploy: {eq: true}
+        }
+      }
+    )
+    {
       edges {
         node {
           title

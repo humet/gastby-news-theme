@@ -7,7 +7,7 @@ import Nav from "./nav"
 import "./header.scss"
 import ThemeStyles from '../styles/theme.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Logo from '../images/fulltimedevils-logo.svg';
 
 const Header = ({ siteTitle }) => (
@@ -58,10 +58,10 @@ const Header = ({ siteTitle }) => (
               textTransform: `uppercase`,
               fontWeight: `bold`,
               textDecoration: `none`
-            }} href="https://www.whatsapp.com">Subscribe to Whatsapp</a>
+            }} href="https://bit.ly/DEVILSsub">Subscribe to YouTube</a>
             <a style={{
               color: ThemeStyles.colour.light
-            }} href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} size="2x" /></a>
+            }} href="https://bit.ly/DEVILSsub" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} size="2x" /></a>
           </div>
       </Container>
     </div>
