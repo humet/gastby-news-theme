@@ -11,6 +11,7 @@ const Footer = ({ siteTitle }) => (
     <footer>
           <Container>
             <section style={{textAlign: `center`, paddingTop: `50px`}}>
+              <hr style={{height: 1, marginBottom: 50}} />
             <Link to="/" >
               <img alt={siteTitle} src={Logo} width="130px" style={{marginBottom: `30px`}} />
             </Link>
@@ -36,7 +37,7 @@ const Footer = ({ siteTitle }) => (
             <nav className="footer-nav">
             <ul>
                 {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
-                    <li key={item.object_slug}>
+                    <li key={item.object_slug} style={{textTransform: 'uppercase'}}>
                     { item.type === "post_type" || item.type === "taxonomy" ? (
                         <Link to={UrlParts(item.url).pathname}>{item.title}</Link>
                     ) : (
