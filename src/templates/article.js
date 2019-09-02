@@ -24,7 +24,7 @@ export const ArticleTemplate = ({
     <div>
     <DFPSlotsProvider dfpNetworkId="21685689509">
       <div className="desktop-ads">
-        <AdSlot sizes={[[728, 90], [300, 250]]} adUnit="article_page_atf" />
+        <AdSlot sizes={[[300, 250]]} adUnit="article_page_atf" />
       </div>
     </DFPSlotsProvider>
     <section>

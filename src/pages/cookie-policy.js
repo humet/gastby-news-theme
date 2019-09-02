@@ -8,7 +8,7 @@ class CookiePolicy extends React.Component {
   render() {
     return (
       <Layout>
-        <SEO title="Privacy Policy" />
+        <SEO title="Cookie Policy" />
          <section><GetPolicy id="20096630/cookie-policy" /></section>
       </Layout>
     )

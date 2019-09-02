@@ -12,7 +12,7 @@ class IndexPage extends React.Component {
     
     return (
       <Layout>
-        <SEO title="Home" />
+        <SEO />
         <CategoryBlock sticky articles={posts} type="featured" title="Featured News" count={3} />
         <CategoryBlock articles={posts} type="list" title="Latest News" count={6} />
         <CategoryBlock articles={posts} type="list" title="Match Reviews" count={6} category={4} />

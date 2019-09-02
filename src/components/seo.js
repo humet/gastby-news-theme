@@ -30,13 +30,14 @@ function SEO({ description, article, title, image, author, pathname }) {
   const metaImage = image || site.siteMetadata.image
   const twitterAuthor = author || site.siteMetadata.author
   const url = `${site.siteMetadata.domain}/${pathname || "/"}`
+  const siteTitle = title ? `${title} | ${site.siteMetadata.title}` : `${site.siteMetadata.title} | ${site.siteMetadata.description}`
 
   return (
     <Helmet>
-      <title>{title}</title>
+      <title>{siteTitle}</title>
       <meta name="description" content={metaDescription} />
       {url && <meta property="og:url" content={url} />}
-      <meta property="og:title" content={`${title} | ${site.siteMetadata.title}`} />
+      <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={site.siteMetadata.domain + metaImage} />
       {(article ? true : null) && (
@@ -58,7 +59,7 @@ SEO.defaultProps = {
 
 SEO.propTypes = {
   description: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   image: PropTypes.string,
   author: PropTypes.string,
   pathname: PropTypes.string,
