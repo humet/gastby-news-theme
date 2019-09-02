@@ -31,60 +31,18 @@ function SEO({ description, lang, meta, keywords, title, image, author }) {
   const twitterAuthor = author || site.siteMetadata.author
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: `${title} | ${site.siteMetadata.title}`,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          property: `og:image`,
-          content: site.siteMetadata.domain + metaImage,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: `@${twitterAuthor}`,
-        },
-        {
-          name: `twitter:title`,
-          content: `${title} | ${site.siteMetadata.title}`,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-    />
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={metaDescription} />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={`${title} | ${site.siteMetadata.title}`} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={site.siteMetadata.domain + metaImage} />
+      <meta name="twitter:card" content={metaDescription} />
+      <meta name="twitter:creator" content={`@${twitterAuthor}`} />
+      <meta name="twitter:title" content={`${title} | ${site.siteMetadata.title}`} />
+      <meta name="twitter:description" content={metaDescription} />
+    </Helmet>
   )
 }
 
