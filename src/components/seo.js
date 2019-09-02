@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title, image, author }) {
+function SEO({ description, article, title, image, author, pathname }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -29,15 +29,19 @@ function SEO({ description, lang, meta, keywords, title, image, author }) {
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || site.siteMetadata.image
   const twitterAuthor = author || site.siteMetadata.author
+  const url = `${site.siteMetadata.domain}/${pathname || "/"}`
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={metaDescription} />
-      <meta property="og:type" content="article" />
+      {url && <meta property="og:url" content={url} />}
       <meta property="og:title" content={`${title} | ${site.siteMetadata.title}`} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={site.siteMetadata.domain + metaImage} />
+      {(article ? true : null) && (
+          <meta property="og:type" content="article" />
+      )}
       <meta name="twitter:card" content={metaDescription} />
       <meta name="twitter:creator" content={`@${twitterAuthor}`} />
       <meta name="twitter:title" content={`${title} | ${site.siteMetadata.title}`} />
@@ -47,20 +51,18 @@ function SEO({ description, lang, meta, keywords, title, image, author }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
   description: ``,
+  pathname: null,
+  article: false,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   image: PropTypes.string,
-  author: PropTypes.string
+  author: PropTypes.string,
+  pathname: PropTypes.string,
+  article: PropTypes.bool,
 }
 
 export default SEO

@@ -85,7 +85,7 @@ const Article = ({ data }) => {
   const description = post.excerpt.replace(/<[^>]*>?/gm, '');
   return (
     <Layout>
-      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} author={author.acf.social_media_handles.twitter} description={description} image={post.featured_media ? post.featured_media.localFile.childImageSharp.fluid.src : siteMeta.siteMetadata.image} />
+      <SEO title={post.title} article pathname={post.slug} author={author.acf.social_media_handles.twitter} description={description} image={post.featured_media ? post.featured_media.localFile.childImageSharp.fluid.src : siteMeta.siteMetadata.image} />
       <ArticleTemplate
         content={post.content}
         excerpt={post.excerpt}
