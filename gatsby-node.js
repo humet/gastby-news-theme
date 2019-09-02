@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.meta[DEPLOY_ENV]) {
     deploy = true;
   } else {
-    deploy = true;
+    deploy = false;
   }
 
   createNodeField({ node, name: 'deploy', value: deploy });
