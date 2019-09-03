@@ -20,7 +20,7 @@ export const ArticleTemplate = ({
 }) => {
   return (
     <div>
-    <section>
+    <section className="entry-content">
       <div className="meta">
         {categories && categories.length ? (
           <Categories categories={categories} />

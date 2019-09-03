@@ -27,7 +27,7 @@ export const ArticleTemplate = ({
         <AdSlot sizes={[[300, 250]]} adUnit="article_page_atf" />
       </div>
     </DFPSlotsProvider>
-    <section>
+    <section className="entry-content">
       <div className="meta">
         {categories && categories.length ? (
           <Categories categories={categories} />

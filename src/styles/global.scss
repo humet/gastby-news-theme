@@ -1,3 +1,13 @@
+.entry-content p {
+    font-size: 18px;
+    line-height: 28px;
+
+    @include breakpoint(md) {
+        font-size: 21px;
+        line-height: 33px;
+    }
+}
+
 a {
     color: $primary;
 }

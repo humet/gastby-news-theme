@@ -25,7 +25,7 @@ export default ({ article }) => (
         <h3 style={{marginBottom: `5px`}}>
           <Link to={`/${article.slug}/`} style={{ color: ThemeStyles.colour.body, textDecoration: `none`}}><span dangerouslySetInnerHTML={{ __html: article.title}} /></Link>
         </h3>
-        <div dangerouslySetInnerHTML={{ __html: article.excerpt.slice(0, 90), }} />
+        <div dangerouslySetInnerHTML={{ __html: `${article.excerpt.slice(0, 90)}...`} } />
       </div>
     </div>
     <small>{article.publishDate}</small>
