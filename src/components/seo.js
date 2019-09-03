@@ -43,10 +43,12 @@ function SEO({ description, article, title, image, author, pathname }) {
       {(article ? true : null) && (
           <meta property="og:type" content="article" />
       )}
-      <meta name="twitter:card" content={metaDescription} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={`@${site.siteMetadata.author}`}></meta>
       <meta name="twitter:creator" content={`@${twitterAuthor}`} />
       <meta name="twitter:title" content={`${title} | ${site.siteMetadata.title}`} />
       <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={site.siteMetadata.domain + metaImage}></meta>
     </Helmet>
   )
 }

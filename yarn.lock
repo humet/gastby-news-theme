@@ -730,7 +730,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.5.5":
+"@babel/runtime@^7.4.3", "@babel/runtime@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
@@ -5297,6 +5297,13 @@ gatsby-plugin-google-tagmanager@^2.1.7:
   integrity sha512-N3SvfE1h+De7dsztA7UJHbwuLCiPzYptRyA02w4D9NQa+SG0A+2T+ZHOn/YvhBxpbtKvcTAVWjEoWHDlqd6fMw==
   dependencies:
     "@babel/runtime" "^7.5.5"
+
+gatsby-plugin-iubenda-cookie-footer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-iubenda-cookie-footer/-/gatsby-plugin-iubenda-cookie-footer-1.1.1.tgz#1d27c67f2392109ac7ac95ae7598a3003acba6f6"
+  integrity sha512-e6ulBfe7uUJBJBhc3zGUVq8TFe91xwB4+AyD9963MGXDbhfY7A69XvHakW4/fz7q0q3xsr3jOCd0r6+imghKOA==
+  dependencies:
+    "@babel/runtime" "^7.4.3"
 
 gatsby-plugin-manifest@^2.1.1:
   version "2.2.1"

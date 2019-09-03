@@ -73,6 +73,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-iubenda-cookie-footer',
+      options: {
+      iubendaOptions: {"lang":"en","siteId":1662385,"enableCMP":true,"googleAdsPreferenceManagement":true,"cookiePolicyId":20096630, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center" }}},
+      // optional, if present, a Google Tag Manager event ("iubenda_consent_given") is triggered
+      googleTagManagerOptions: true
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
