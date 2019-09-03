@@ -23,7 +23,7 @@ export default ({ article }) => (
           <Categories categories={article.categories} />
         ) : null}
         <h3 style={{marginBottom: `5px`}}>
-          <Link to={`/${article.slug}/`} style={{ color: ThemeStyles.colour.body, textDecoration: `none`}}>{article.title}</Link>
+          <Link to={`/${article.slug}/`} style={{ color: ThemeStyles.colour.body, textDecoration: `none`}}><span dangerouslySetInnerHTML={{ __html: article.title}} /></Link>
         </h3>
         <div dangerouslySetInnerHTML={{ __html: article.excerpt.slice(0, 90), }} />
       </div>

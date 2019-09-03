@@ -33,7 +33,7 @@ export const ArticleTemplate = ({
           <Categories categories={categories} />
         ) : null}
               
-        <h1 className="section-headline">{title}</h1>
+        <h1 className="section-headline" dangerouslySetInnerHTML={{ __html: title }} />
         <div dangerouslySetInnerHTML={{ __html: excerpt, }} />
 
         <div className="meta__dateauthor">

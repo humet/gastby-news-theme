@@ -34,6 +34,7 @@ function SEO({ description, article, title, image, author, pathname }) {
 
   return (
     <Helmet>
+      <html lang="en" />
       <title>{siteTitle}</title>
       <meta name="description" content={metaDescription} />
       {url && <meta property="og:url" content={url} />}
