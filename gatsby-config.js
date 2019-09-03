@@ -92,6 +92,6 @@ module.exports = {
         icon: `static/images/icon.svg`,
       },
     },
-     `gatsby-plugin-offline`,
+     //`gatsby-plugin-offline`,
   ],
 }
