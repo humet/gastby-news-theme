@@ -10,7 +10,9 @@ const CategoryTemplate = (props) => {
   return (
     <Layout>
       <SEO title={props.pageContext.name} />
-      <CategoryBlock articles={posts} type="list" title={props.pageContext.name} />
+      <div style={{padding: `20px 30px 5px`, backgroundColor: `#fff`}}><h1 style={{marginBottom: 0}} dangerouslySetInnerHTML={{ __html: props.pageContext.name }} /></div>
+      <CategoryBlock articles={posts} sticky type="featured" title={`Featured ${props.pageContext.name}`} />
+      <CategoryBlock articles={posts} type="list" title={`More ${props.pageContext.name}`} />
     </Layout>
   )
 }
