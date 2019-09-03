@@ -19,7 +19,7 @@ module.exports = {
         baseUrl: "fulltimedevils.wpengine.com",
         protocol: "http",
         hostingWPCOM: false,
-        verboseOutput: false,
+        verboseOutput: true,
         useACF: true,
       },
     },

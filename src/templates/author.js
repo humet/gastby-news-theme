@@ -25,11 +25,15 @@ const AuthorTemplate = props => {
     twitter = data.wordpressWpUsers.acf.social_media_handles.twitter
   }
 
+  let posts = {}
   // The `authored_wordpress__POST` returns a simple array instead of an array
   // of edges / nodes. We therefore need to convert the array here.
-  const posts = authored_wordpress__POST.map(post => ({
-    node: post,
-  }))
+  if(authored_wordpress__POST != null) {
+    posts = authored_wordpress__POST.map(post => ({
+      node: post,
+    }))
+  }
+ 
 
   function socialIcons() {
     if(instagram || twitter) {
@@ -64,7 +68,9 @@ const AuthorTemplate = props => {
         <h2 style={{textTransform: `uppercase`}}>Want to get in touch?</h2>
         <hr />
       </section>
+      { authored_wordpress__POST != null &&
       <CategoryBlock articles={posts} type="list" title={title} />
+      }
     </Layout>
   )
 }
