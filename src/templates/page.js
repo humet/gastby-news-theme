@@ -72,7 +72,6 @@ const Article = ({ data }) => {
       <ArticleTemplate
         content={post.content}
         title={post.title}
-        featuredimage={post.featured_media}
       />
     </Layout>
   )
@@ -98,17 +97,6 @@ export const pageQuery = graphql`
       title
       slug
       content
-      featured_media {
-        alt_text
-        caption
-        localFile{
-          childImageSharp {
-            fluid(maxWidth: 650) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
-      }
     }
   }
 `
