@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Full Time Devils`,
     description: `The World's Biggest Unoffical Manchester United Fan Channel`,
-    domain: `https://www.fulltimedevils.com`, // No trailing slash
+    siteUrl: `https://www.fulltimedevils.com`, // No trailing slash
     author: `fulltimedevils`, // No @ symbol
     image: `/images/facebookopengraph.jpg` 
   },
@@ -81,5 +81,6 @@ module.exports = {
       },
     },
      `gatsby-plugin-offline`,
+     `gatsby-plugin-sitemap`,
   ],
 }
