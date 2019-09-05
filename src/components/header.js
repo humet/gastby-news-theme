@@ -61,7 +61,7 @@ const Header = ({ siteTitle }) => (
             }} href="https://bit.ly/DEVILSsub">Subscribe to YouTube</a>
             <a style={{
               color: ThemeStyles.colour.light
-            }} href="https://bit.ly/DEVILSsub" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} size="2x" /></a>
+            }} href="https://bit.ly/DEVILSsub" aria-label="Subscribe to the Full Time Devils YouTube" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} size="2x" /></a>
           </div>
       </Container>
     </div>
@@ -75,7 +75,7 @@ const Header = ({ siteTitle }) => (
       borderBottom: ThemeStyles.borders.primary,
     }} className="hideDesktop">
       <Container>
-        <a href="https://shop.fulltimedevils.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>FTD Merchandise</a>
+        <a href="https://shop.fulltimedevils.com" aria-label="Visit the Full Time Devils Store" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>FTD Merchandise</a>
       </Container>
     </div>
     <Nav />
