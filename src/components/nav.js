@@ -30,7 +30,7 @@ const Nav = () => (
                     { item.type === "post_type" || item.type === "taxonomy" ? (
                         <Link to={UrlParts(item.url).pathname}>{item.title}</Link>
                     ) : (
-                        <a href={item.object_slug}>{item.title}</a>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
                     ) }
                     </li>
                 ))}

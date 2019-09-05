@@ -10,7 +10,7 @@ import ThemeStyles from '../styles/theme';
 export default class IndexPage extends React.Component {
   render() {
     const { articles, title, sticky, type, count, category } = this.props
-    
+    if(articles.length) {
     return (
       <section>
         {title &&
@@ -43,7 +43,12 @@ export default class IndexPage extends React.Component {
             })}
           </div>
       </section>
-    )
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 
@@ -76,7 +81,7 @@ export const pageQuery = graphql`
       alt_text
       localFile{
         childImageSharp {
-          fluid(maxWidth: 414) {
+          fluid(maxHeight: 676) {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
