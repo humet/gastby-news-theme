@@ -17,9 +17,9 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         baseUrl: "fulltimedevils.wpengine.com",
-        protocol: "http",
+        protocol: "https",
         hostingWPCOM: false,
-        verboseOutput: true,
+        verboseOutput: false,
         useACF: true,
       },
     },

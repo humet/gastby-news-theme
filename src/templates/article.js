@@ -1,9 +1,9 @@
 import React from 'react'
 import { DFPSlotsProvider, AdSlot } from 'react-dfp';
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import '@iframely/embed.js/src'
 import Layout from '../components/layout'
 import Categories from '../components/categories'
 import SEO from "../components/seo"
@@ -23,9 +23,6 @@ export const ArticleTemplate = ({
 }) => {
   return (
     <div>
-      <Helmet>
-      <script src="https://cdn.embedly.com/widgets/platform.js" type="text/javascript"/>
-      </Helmet>
     <DFPSlotsProvider dfpNetworkId="21685689509">
       <div className="desktop-ads">
         <AdSlot sizes={[[300, 250]]} adUnit="article_page_atf" />
