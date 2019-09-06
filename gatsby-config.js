@@ -10,7 +10,7 @@ module.exports = {
     description: `The World's Biggest Unoffical Manchester United Fan Channel`,
     siteUrl: `https://www.fulltimedevils.com`, // No trailing slash
     author: `fulltimedevils`, // No @ symbol
-    image: `static/images/facebookopengraph.jpg` 
+    image: `/static/images/facebookopengraph.jpg` 
   },
   plugins: [
     {
