@@ -9,7 +9,7 @@ import ThemeStyles from '../styles/theme';
 
 export default class IndexPage extends React.Component {
   render() {
-    const { articles, title, sticky, type, count, category } = this.props
+    const { articles, title, sticky, type, count, category, hideSticky } = this.props
     if(articles.length) {
     return (
       <section>
@@ -19,7 +19,15 @@ export default class IndexPage extends React.Component {
         <div className={`posts posts__${type}`}>
           {
             articles
-            .filter(({ node }) => node.sticky === sticky)
+            .filter(({ node }) => {
+              if(sticky && !node.sticky) {
+                return false
+              } else if(hideSticky && node.sticky) {
+                return true
+              } else {
+                return true
+              }
+            })
             .filter(({node}) => {
               let hasCat = false;
               if (typeof category == 'undefined') {
@@ -58,11 +66,13 @@ IndexPage.propTypes = {
   type: PropTypes.string,
   sticky: PropTypes.bool,
   count: PropTypes.number,
-  category: PropTypes.number
+  category: PropTypes.number,
+  hideSticky: PropTypes.bool,
 }
 
 IndexPage.defaultProps = {
   sticky: false,
+  hideSticky: false,
   count: 9999
 }
 
