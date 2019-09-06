@@ -3,7 +3,6 @@ import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import '@iframely/embed.js/src'
 import Layout from '../components/layout'
 import Categories from '../components/categories'
 import SEO from "../components/seo"
