@@ -1,0 +1,12 @@
+@import '../styles/main.scss';
+
+.sponsoredposts {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--item {
+    @include breakpoint(md) {
+      width: 33%;
+    }
+  }
+}
