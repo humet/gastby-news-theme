@@ -16,8 +16,7 @@ class SponsoredPosts extends React.Component {
     fetch("https://trends.revcontent.com/api/v2/?api_key=a12f1105728acbe7ec4e5e171a8b398e9ff29047&pub_id=93042&widget_id=114357&domain=fulltimedevils.com", {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/json'
       },
     })
     .then(res => res.json())
