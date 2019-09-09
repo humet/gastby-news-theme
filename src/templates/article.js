@@ -6,6 +6,7 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import Categories from '../components/categories'
 import SEO from "../components/seo"
+import SponsoredPosts from "../components/sponsoredposts"
 //import PopPosts from "../hooks/getPopPosts"
 
 import ThemeStyles from '../styles/theme.js'
@@ -73,9 +74,7 @@ export const ArticleTemplate = ({
         </aside>
         </div>
     </section>
-    <section style={{background: ThemeStyles.colour.primary}}>
-      <h2 style={{ textTransform: `uppercase`, color: `#fff`, borderBottom: `#fff solid 3px`, paddingBottom: `15px`}}>Sponsored Content</h2>
-    </section>
+    <SponsoredPosts />
     </div>
   )
 }
