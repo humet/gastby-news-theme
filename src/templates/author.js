@@ -72,6 +72,7 @@ const AuthorTemplate = props => {
           <GravityFormForm
           id={1}
           formData={AllGravityData()}
+          lambda={process.env.LAMBDA_ENDPOINT}
           />
         }
         <hr />

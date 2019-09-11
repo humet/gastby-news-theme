@@ -3,7 +3,7 @@
 .gravityform {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -15px;
+  margin: 0 -15px 40px;
 
   &__field {
     width: 50%;
@@ -44,5 +44,14 @@
     display: inline-block;
     padding: 10px;
     font-weight: bold;
+  }
+
+  button {
+    background: $primary;
+    border: none;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 10px 30px;
+    color: #fff;
   }
 }

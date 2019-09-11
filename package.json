@@ -29,6 +29,7 @@
     "gatsby-source-gravityforms": "^1.0.15",
     "gatsby-source-wordpress": "^3.1.28",
     "gatsby-transformer-sharp": "^2.2.13",
+    "netlify-lambda": "^1.6.3",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -50,6 +51,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/lambda",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "clean": "rm -rf .cache"
