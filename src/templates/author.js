@@ -4,11 +4,11 @@ import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CategoryBlock from '../components/categoryblock'
-import AllGravityData from '../hooks/use-gravity-data'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import GravityFormForm from 'gatsby-gravityforms-component'
+
 
 import ThemeStyles from '../styles/theme.js'
 import "./author.scss"
@@ -66,17 +66,7 @@ const AuthorTemplate = props => {
         <p>{ description }</p>
         }
       </section>
-      <section>
-        <h2 style={{textTransform: `uppercase`}}>Want to get in touch?</h2>
-        { AllGravityData() &&
-          <GravityFormForm
-          id={1}
-          formData={AllGravityData()}
-          lambda={process.env.LAMBDA_ENDPOINT}
-          />
-        }
-        <hr />
-      </section>
+      
       { authored_wordpress__POST != null &&
       <CategoryBlock articles={posts} type="list" title={title} />
       }

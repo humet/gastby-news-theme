@@ -1,3 +1,7 @@
 [build]
   Functions = "lambda"
   Command = "netlify-lambda build src/lambda && gatsby build"
+
+[build.environment]
+GRAVITY_FORMS_KEY="ck_a903394ff9d9af7efe42da63e8807936136e95f1"
+GRAVITY_FORMS_SECRET="cs_5f3526e66703a01dc3b75153c65297697807f220"
