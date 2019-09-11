@@ -3,14 +3,13 @@ import React from 'react'
 import ThemeStyles from '../styles/theme.js'
 import './sponsoredposts.scss'
 
-let data
-
 class SponsoredPosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
+      content: ""
     };
   }
 
@@ -19,9 +18,9 @@ class SponsoredPosts extends React.Component {
     .then(res => res.json())
     .then(
       (result) => {
-        data = result.content
         this.setState({
-          isLoaded: true
+          isLoaded: true,
+          content: result.content
         });
       },
       (error) => {
@@ -34,7 +33,7 @@ class SponsoredPosts extends React.Component {
   }
 
   showRevcontent(data) {
-    const items = data.content.map(item => (
+    const items = data.map(item => (
         <div key={item.uid} style={{ position: `relative`, padding: `0 15px`}} className="articlepreview sponsoredposts--item">
         <a href={item.url} target="_blank" rel="noopener noreferrer">
          <img src={item.image} alt={item.headline} width="100%" />
@@ -69,7 +68,7 @@ class SponsoredPosts extends React.Component {
     } else if (!isLoaded) {
       status = <div>Loading...</div>
     } else {
-      status = this.showRevcontent(data)
+      status = this.showRevcontent(content)
     }
     return(
     <section style={{background: ThemeStyles.colour.primary}}>
