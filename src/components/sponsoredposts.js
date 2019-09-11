@@ -14,7 +14,7 @@ class SponsoredPosts extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://trends.revcontent.com/api/v2/?api_key=a12f1105728acbe7ec4e5e171a8b398e9ff29047&pub_id=93042&widget_id=114357&domain=fulltimedevils.com")
+    fetch("https://trends.revcontent.com/api/v2/?api_key=a12f1105728acbe7ec4e5e171a8b398e9ff29047&pub_id=93042&widget_id=114357&domain=fulltimedevils.com&sponsored+count=6")
     .then(res => res.json())
     .then(
       (result) => {
