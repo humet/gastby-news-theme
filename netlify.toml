@@ -1,6 +1,6 @@
 [build]
   Functions = "lambda"
-  Command = "npm run build:lambda && gatsby build"
+  Command = "npm run start:lambda && gatsby build"
 
 [build.environment]
 GRAVITY_FORMS_KEY="ck_a903394ff9d9af7efe42da63e8807936136e95f1"
