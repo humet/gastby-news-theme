@@ -52,10 +52,13 @@ function SEO({ description, article, title, image, author, pathname }) {
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={site.siteMetadata.siteUrl + metaImage}></meta>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <script>{` adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-9430479511645320",
-                enable_page_level_ads: true
-          }; `}
+      <script>
+          {`
+            (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-9430479511645320",
+              enable_page_level_ads: true
+            });
+          `}
       </script>
     </Helmet>
   )
