@@ -1,18 +1,32 @@
 import React from "react"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import CategoryBlock from '../components/categoryblock'
+import CategoryBlock from "../components/categoryblock"
 
-const CategoryTemplate = (props) => {
-  const posts = props.data.allWordpressPost.edges;
+const CategoryTemplate = props => {
+  const posts = props.data.allWordpressPost.edges
   return (
     <Layout>
       <SEO title={props.pageContext.name} />
-      <div style={{padding: `20px 30px 5px`, backgroundColor: `#fff`}}><h1 style={{marginBottom: 0}} dangerouslySetInnerHTML={{ __html: props.pageContext.name }} /></div>
-      <CategoryBlock articles={posts} sticky type="featured" title={`Featured ${props.pageContext.name}`} />
-      <CategoryBlock articles={posts} type="list" title={`More ${props.pageContext.name}`} />
+      <div style={{ padding: `20px 30px 5px`, backgroundColor: `#fff` }}>
+        <h1
+          style={{ marginBottom: 0 }}
+          dangerouslySetInnerHTML={{ __html: props.pageContext.name }}
+        />
+      </div>
+      <CategoryBlock
+        articles={posts}
+        sticky
+        type="featured"
+        title={`Featured ${props.pageContext.name}`}
+      />
+      <CategoryBlock
+        articles={posts}
+        type="list"
+        title={`More ${props.pageContext.name}`}
+      />
     </Layout>
   )
 }
@@ -27,15 +41,11 @@ export const pageQuery = graphql`
       }
     }
     allWordpressPost(
-      filter:
-      { 
-        categories: {elemMatch: {slug: {eq: $slug}}}
-        fields: {
-          deploy: {eq: true}
-        }
+      filter: {
+        categories: { elemMatch: { slug: { eq: $slug } } }
+        fields: { deploy: { eq: true } }
       }
-    )
-    {
+    ) {
       edges {
         node {
           title
@@ -48,7 +58,7 @@ export const pageQuery = graphql`
           }
           featured_media {
             alt_text
-            localFile{
+            localFile {
               childImageSharp {
                 fluid(maxWidth: 650) {
                   ...GatsbyImageSharpFluid_tracedSVG

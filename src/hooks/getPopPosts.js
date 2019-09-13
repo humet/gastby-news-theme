@@ -5,7 +5,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query PopPosts {
-        allPageViews(limit:10, sort:{fields:totalCount, order: DESC}) {
+        allPageViews(limit: 10, sort: { fields: totalCount, order: DESC }) {
           edges {
             node {
               path
@@ -17,9 +17,9 @@ export default () => (
     `}
     render={data => (
       <ul>
-        { data.allPageViews.edges.map((post) =>
-        <li key={post.node.path}>{post.node.path}</li>
-        ) }
+        {data.allPageViews.edges.map(post => (
+          <li key={post.node.path}>{post.node.path}</li>
+        ))}
       </ul>
     )}
   />

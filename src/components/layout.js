@@ -31,13 +31,11 @@ const Layout = ({ children }) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <div className="wrapper">
           <Container>
-            <main>
-              {children}
-            </main>
+            <main>{children}</main>
           </Container>
         </div>
         <Footer siteTitle={data.site.siteMetadata.title} />
-    </>
+      </>
     )}
   />
 )

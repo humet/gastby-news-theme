@@ -9,7 +9,9 @@ class PrivacyPolicy extends React.Component {
     return (
       <Layout>
         <SEO title="Privacy Policy" />
-         <section><GetPolicy id="20096630" /></section>
+        <section>
+          <GetPolicy id="20096630" />
+        </section>
       </Layout>
     )
   }
