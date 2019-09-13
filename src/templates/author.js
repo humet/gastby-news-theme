@@ -72,7 +72,7 @@ const AuthorTemplate = props => {
           <GravityFormForm
           id={1}
           formData={AllGravityData()}
-          lambda={process.env.LAMBDA_ENDPOINT}
+          lambda={process.env.GATSBY_LAMBDA_ENDPOINT}
           presetValues={{ input_1: name }}
           />
         }
