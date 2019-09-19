@@ -1,42 +1,14 @@
 import React from "react"
+import VisibilitySensor from 'react-visibility-sensor';
+import { Location } from '@reach/router';
+
 import ThemeStyles from "../styles/theme.js"
 import "./sponsoredposts.scss"
 
-class SponsoredPosts extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      content: "",
-    }
-  }
-
-  componentDidMount() {
-    fetch(
-      "https://trends.revcontent.com/api/v2/?api_key=a12f1105728acbe7ec4e5e171a8b398e9ff29047&pub_id=93042&widget_id=114357&domain=fulltimedevils.com&sponsored+count=6"
-    )
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            content: result.content,
-          })
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error,
-          })
-        }
-      )
-  }
-
-  showRevcontent(data) {
-    const items = data.map(item => (
-      <div
-        key={item.uid}
+const SponsoredPost = ( props ) => {
+  const item = props.content
+  return (
+    <div
         style={{ position: `relative`, padding: `0 15px` }}
         className="articlepreview sponsoredposts--item"
       >
@@ -84,6 +56,59 @@ class SponsoredPosts extends React.Component {
           </div>
         </div>
       </div>
+  )
+}
+
+class SponsoredPosts extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: null,
+      isLoaded: false,
+      content: "",
+    }
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://trends.revcontent.com/api/v2/multi.php?api_key=a12f1105728acbe7ec4e5e171a8b398e9ff29047&pub_id=93042&widget_id=114357&domain=fulltimedevils.com&sponsored+count=6"
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            content: result.widgets[0],
+          })
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error,
+          })
+        }
+      )
+  }
+
+  _onChange = (isVisible, url, location, creativeNumber) => {
+    const encLocation = encodeURI(location.href)
+    console.log(encLocation)
+    if(isVisible) {
+      fetch(
+        url + "&referer=" + encLocation + "&p[]=" + creativeNumber
+      )
+    }
+  };
+
+  showRevcontent(data) {
+    const items = data.content.map((item, index) => (
+      <Location key={item.uid}>
+      {({ location }) =>
+      <VisibilitySensor onChange={isVisible => this._onChange(isVisible, data.view, location, index)}>
+        <SponsoredPost content={item} />
+      </VisibilitySensor>
+      }
+      </Location>
     ))
 
     return items
