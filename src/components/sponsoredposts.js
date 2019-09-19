@@ -66,6 +66,7 @@ class SponsoredPosts extends React.Component {
       error: null,
       isLoaded: false,
       content: "",
+      adsViewed: ""
     }
   }
 
@@ -104,9 +105,9 @@ class SponsoredPosts extends React.Component {
     const items = data.content.map((item, index) => (
       <Location key={item.uid}>
       {({ location }) =>
-      <VisibilitySensor onChange={isVisible => this._onChange(isVisible, data.view, location, index)}>
-        <SponsoredPost content={item} />
-      </VisibilitySensor>
+        <VisibilitySensor onChange={isVisible => this._onChange(isVisible, data.view, location, index)}>
+          <SponsoredPost content={item} />
+        </VisibilitySensor>
       }
       </Location>
     ))
