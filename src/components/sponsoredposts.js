@@ -1,61 +1,61 @@
 import React from "react"
-import VisibilitySensor from 'react-visibility-sensor';
-import { Location } from '@reach/router';
+import VisibilitySensor from "react-visibility-sensor"
+import { Location } from "@reach/router"
 
 import ThemeStyles from "../styles/theme.js"
 import "./sponsoredposts.scss"
 
-const SponsoredPost = ( props ) => {
+const SponsoredPost = props => {
   const item = props.content
   return (
     <div
-        style={{ position: `relative`, padding: `0 15px` }}
-        className="articlepreview sponsoredposts--item"
-      >
-        <a href={item.url} target="_blank" rel="noopener noreferrer">
-          <img src={item.image} alt={item.headline} width="100%" />
-        </a>
-        <div style={{ position: `relative`, top: `-40px`, width: "100%" }}>
-          <div
-            style={{
-              background: `#fff`,
-              padding: `15px`,
-              width: `80%`,
-              margin: `0 auto`,
-              textAlign: `center`,
-              border: ThemeStyles.borders.primary,
-            }}
-          >
-            <div className="small" style={{ textTransform: `uppercase` }}>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: ThemeStyles.colour.primary,
-                  fontWeight: `bold`,
-                  textDecoration: `none`,
-                }}
-              >
-                {item.brand}
-              </a>
-            </div>
-            <h3 style={{ marginBottom: `5px` }}>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: ThemeStyles.colour.body,
-                  textDecoration: `none`,
-                }}
-              >
-                {item.headline}
-              </a>
-            </h3>
+      style={{ position: `relative`, padding: `0 15px` }}
+      className="articlepreview sponsoredposts--item"
+    >
+      <a href={item.url} target="_blank" rel="noopener noreferrer">
+        <img src={item.image} alt={item.headline} width="100%" />
+      </a>
+      <div style={{ position: `relative`, top: `-40px`, width: "100%" }}>
+        <div
+          style={{
+            background: `#fff`,
+            padding: `15px`,
+            width: `80%`,
+            margin: `0 auto`,
+            textAlign: `center`,
+            border: ThemeStyles.borders.primary,
+          }}
+        >
+          <div className="small" style={{ textTransform: `uppercase` }}>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: ThemeStyles.colour.primary,
+                fontWeight: `bold`,
+                textDecoration: `none`,
+              }}
+            >
+              {item.brand}
+            </a>
           </div>
+          <h3 style={{ marginBottom: `5px` }}>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: ThemeStyles.colour.body,
+                textDecoration: `none`,
+              }}
+            >
+              {item.headline}
+            </a>
+          </h3>
         </div>
       </div>
+    </div>
   )
 }
 
@@ -66,7 +66,7 @@ class SponsoredPosts extends React.Component {
       error: null,
       isLoaded: false,
       content: "",
-      adsViewed: ""
+      adsViewed: "",
     }
   }
 
@@ -94,21 +94,23 @@ class SponsoredPosts extends React.Component {
   _onChange = (isVisible, url, location, creativeNumber) => {
     const encLocation = encodeURI(location.href)
     console.log(encLocation)
-    if(isVisible) {
-      fetch(
-        url + "&referer=" + encLocation + "&p[]=" + creativeNumber
-      )
+    if (isVisible) {
+      fetch(url + "&referer=" + encLocation + "&p[]=" + creativeNumber)
     }
-  };
+  }
 
   showRevcontent(data) {
     const items = data.content.map((item, index) => (
       <Location key={item.uid}>
-      {({ location }) =>
-        <VisibilitySensor onChange={isVisible => this._onChange(isVisible, data.view, location, index)}>
-          <SponsoredPost content={item} />
-        </VisibilitySensor>
-      }
+        {({ location }) => (
+          <VisibilitySensor
+            onChange={isVisible =>
+              this._onChange(isVisible, data.view, location, index)
+            }
+          >
+            <SponsoredPost content={item} />
+          </VisibilitySensor>
+        )}
       </Location>
     ))
 
