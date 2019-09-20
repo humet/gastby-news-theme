@@ -3,10 +3,6 @@ require("dotenv").config({
 })
 
 const googleApiKey = process.env.GOOGLE_API_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
-const gravityforms = {
-  "key": process.env.GATSBY_GRAVITY_FORMS_KEY,
-  "secret": process.env.GATSBY_GRAVITY_FORMS_SECRET,
-}
 
 module.exports = {
   siteMetadata: {
@@ -27,16 +23,6 @@ module.exports = {
         useACF: true,
       },
     },
-    {
-      resolve: 'gatsby-source-gravityforms',
-      options: {
-          baseUrl: 'https://admin.fulltimedevils.com',
-          api: {
-              key: gravityforms.key,
-              secret: gravityforms.secret,
-          },
-      },
-  },
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
