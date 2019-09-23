@@ -43,6 +43,7 @@ export default function SubmitContent() {
         data-netlify-honeypot="bot-field"
         name="submitcontent"
         method="POST"
+        action="/thank-you"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="submitcontent" />
@@ -53,37 +54,37 @@ export default function SubmitContent() {
         </p>
         <div className="form__row">
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="firstname">First Name:</label>
+            <label className="form__field__label" htmlFor="firstname">First Name:</label>
             <input className="form__field__input" type="text" name="firstname" id="firstname" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="lastname">Last Name:</label>
+            <label className="form__field__label" htmlFor="lastname">Last Name:</label>
             <input className="form__field__input" type="text" name="lastname" id="lastname" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="email">Email:</label>
+            <label className="form__field__label" htmlFor="email">Email:</label>
             <input className="form__field__input" type="email" name="email" id="email" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="phone">Phone (optional)</label>
+            <label className="form__field__label" htmlFor="phone">Phone (optional)</label>
             <input className="form__field__input" type="tel" name="phone" id="phone" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--100">
-            <label className="form__field__label" for="message">Tell us about your video:</label>
+            <label className="form__field__label" htmlFor="message">Tell us about your video:</label>
             <textarea className="form__field__input" name="message" id="message" rows="10" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="file">Upload your file <br></br>(MP4, MOV, AVI, M4V, WMV):</label>
-            <input className="form__field__input" name="file" id="file" type="file" accept="video/*" onChange={handleAttachment} />
+            <label className="form__field__label" htmlFor="file">Upload your file <br></br>(MP4, MOV, AVI, M4V, WMV):</label>
+            <input className="form__field__input" name="file" id="file" type="file" onChange={handleAttachment} />
           </div>
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="username">Please choose a platform and provide the username to be credited (FB, IG, YT or Twitter):</label>
+            <label className="form__field__label" htmlFor="username">Please choose a platform and provide the username to be credited (FB, IG, YT or Twitter):</label>
             <input className="form__field__input" type="text" name="username" id="username" onChange={handleChange} />
             <small>Example: YT: YourUsernameHere</small>
           </div>
@@ -91,11 +92,11 @@ export default function SubmitContent() {
         <div className="form__row">
           <div className="form__field form__field--100">
             <input className="form__field__input form__field__input--checkbox" type="checkbox" name="privacy-policy" id="privacy-policy" onChange={handleChange} />
-            <label className="form__field__label" for="privacy-policy">I agree to the <Link to="/privacy-policy">Privacy Policy</Link></label>
+            <label className="form__field__label" htmlFor="privacy-policy">I agree to the <Link to="/privacy-policy">Privacy Policy</Link></label>
           </div>
           <div className="form__field form__field--100">
             <input className="form__field__input form__field__input--checkbox" type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleChange} />
-            <label className="form__field__label" for="terms-conditions">I agree to the terms and conditions shown below.</label>
+            <label className="form__field__label" htmlFor="terms-conditions">I agree to the terms and conditions shown below.</label>
           </div>
         </div>
         <div className="form__row">
