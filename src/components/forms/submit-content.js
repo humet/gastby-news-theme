@@ -39,11 +39,10 @@ export default function SubmitContent() {
     return (
       <form className="form"
         data-netlify="true"
-        data-netlify-recaptcha="true"
         data-netlify-honeypot="bot-field"
         name="submitcontent"
         method="POST"
-        action="/thank-you"
+        action="/thank-you/"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="submitcontent" />
