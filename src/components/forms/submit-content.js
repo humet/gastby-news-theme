@@ -1,101 +1,108 @@
 import React from "react";
 import { Link } from "gatsby"
 
-export default class SubmitContent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.submitForm = this.submitForm.bind(this);
-    this.state = {
-      status: ""
-    };
+function encode(data) {
+  const formData = new FormData()
+
+  for (const key of Object.keys(data)) {
+    formData.append(key, data[key])
   }
 
-  render() {
-    const { status } = this.state;
+  return formData
+}
+
+export default function SubmitContent() {
+  const [state, setState] = React.useState({})
+
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handleAttachment = (e) => {
+    setState({ ...state, [e.target.name]: e.target.files[0] })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...state,
+      }),
+    })
+      .then(() => alert('form sent'))
+      .catch((error) => alert(error))
+  }
+
     return (
       <form className="form"
-        onSubmit={this.submitForm}
-        action="https://formspree.io/xwdpdbnm"
+        data-netlify="true"
+        data-netlify-recaptcha="true"
+        data-netlify-honeypot="bot-field"
+        name="submitcontent"
         method="POST"
-        enctype="multipart/form-data"
+        onSubmit={handleSubmit}
       >
+        <input type="hidden" name="form-name" value="submitcontent" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+          </label>
+        </p>
         <div className="form__row">
           <div className="form__field form__field--50">
             <label className="form__field__label" for="firstname">First Name:</label>
-            <input className="form__field__input" type="text" name="firstname" id="firstname" />
+            <input className="form__field__input" type="text" name="firstname" id="firstname" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
             <label className="form__field__label" for="lastname">Last Name:</label>
-            <input className="form__field__input" type="text" name="lastname" id="lastname" />
+            <input className="form__field__input" type="text" name="lastname" id="lastname" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--50">
             <label className="form__field__label" for="email">Email:</label>
-            <input className="form__field__input" type="email" name="email" id="email" />
+            <input className="form__field__input" type="email" name="email" id="email" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
             <label className="form__field__label" for="phone">Phone (optional)</label>
-            <input className="form__field__input" type="tel" name="phone" id="phone" />
+            <input className="form__field__input" type="tel" name="phone" id="phone" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--100">
             <label className="form__field__label" for="message">Tell us about your video:</label>
-            <textarea className="form__field__input" name="message" id="message" rows="10" />
+            <textarea className="form__field__input" name="message" id="message" rows="10" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--50">
             <label className="form__field__label" for="file">Upload your file <br></br>(MP4, MOV, AVI, M4V, WMV):</label>
-            <input className="form__field__input" name="file" id="file" type="file" accept="video/*" />
+            <input className="form__field__input" name="file" id="file" type="file" accept="video/*" onChange={handleAttachment} />
           </div>
           <div className="form__field form__field--50">
             <label className="form__field__label" for="username">Please choose a platform and provide the username to be credited (FB, IG, YT or Twitter):</label>
-            <input className="form__field__input" type="text" name="username" id="username" />
+            <input className="form__field__input" type="text" name="username" id="username" onChange={handleChange} />
             <small>Example: YT: YourUsernameHere</small>
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--100">
-            <input className="form__field__input form__field__input--checkbox" type="checkbox" name="privacy-policy" id="privacy-policy" />
+            <input className="form__field__input form__field__input--checkbox" type="checkbox" name="privacy-policy" id="privacy-policy" onChange={handleChange} />
             <label className="form__field__label" for="privacy-policy">I agree to the <Link to="/privacy-policy">Privacy Policy</Link></label>
           </div>
           <div className="form__field form__field--100">
-            <input className="form__field__input form__field__input--checkbox" type="checkbox" name="terms-conditions" id="terms-conditions" />
+            <input className="form__field__input form__field__input--checkbox" type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleChange} />
             <label className="form__field__label" for="terms-conditions">I agree to the terms and conditions shown below.</label>
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--100">
-            {status === "SUCCESS" ? <div className="form__message form__message--success">Thanks! We have received your message.</div> : <button>Submit</button>}
-          </div>
-        </div>
-        <div className="form__row">
-          <div className="form__field form__field--100">
-            {status === "ERROR" && <div className="form__message form__message--error">Ooops! There was an error.</div>}
+            <button type="submit">Send</button>
           </div>
         </div>
       </form>
-    );
+    )
   }
-
-  submitForm(ev) {
-    ev.preventDefault();
-    const form = ev.target;
-    const data = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        form.reset();
-        this.setState({ status: "SUCCESS" });
-      } else {
-        this.setState({ status: "ERROR" });
-      }
-    };
-    xhr.send(data);
-  }
-}
