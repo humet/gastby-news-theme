@@ -20,7 +20,7 @@ export default function ContactAuthor(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setState({...state,[e.target.elements[2].name]: e.target.elements[2].value})
+    state[e.target.elements[2].name] = e.target.elements[2].value
     const form = e.target
     fetch('/', {
       method: 'POST',
@@ -50,27 +50,27 @@ export default function ContactAuthor(props) {
         <input type="hidden" name="author-name" value={props.authorName} />
         <div className="form__row">
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="firstname">First Name:</label>
+            <label className="form__field__label" htmlFor="firstname">First Name:</label>
             <input className="form__field__input" type="text" name="firstname" id="firstname" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="lastname">Last Name:</label>
+            <label className="form__field__label" htmlFor="lastname">Last Name:</label>
             <input className="form__field__input" type="text" name="lastname" id="lastname" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="email">Email:</label>
+            <label className="form__field__label" htmlFor="email">Email:</label>
             <input className="form__field__input" type="email" name="email" id="email" onChange={handleChange} />
           </div>
           <div className="form__field form__field--50">
-            <label className="form__field__label" for="phone">Phone (optional)</label>
+            <label className="form__field__label" htmlFor="phone">Phone (optional)</label>
             <input className="form__field__input" type="tel" name="phone" id="phone" onChange={handleChange} />
           </div>
         </div>
         <div className="form__row">
           <div className="form__field form__field--100">
-            <label className="form__field__label" for="message">Your Message:</label>
+            <label className="form__field__label" htmlFor="message">Your Message:</label>
             <textarea className="form__field__input" name="message" id="message" rows="10" onChange={handleChange} />
           </div>
         </div>
