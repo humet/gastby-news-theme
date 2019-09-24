@@ -13,6 +13,7 @@ function encode(data) {
 
 export default function SubmitContent() {
   const [state, setState] = React.useState({})
+  const [sent, setSent] = React.useState(false)
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
@@ -32,17 +33,16 @@ export default function SubmitContent() {
         ...state,
       }),
     })
-      .then(() => alert('form sent'))
+      .then(() => setSent(true))
       .catch((error) => alert(error))
   }
-
+    if(!sent) {
     return (
       <form className="form"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         name="submitcontent"
         method="POST"
-        action="/thank-you/"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="submitcontent" />
@@ -104,5 +104,13 @@ export default function SubmitContent() {
           </div>
         </div>
       </form>
-    )
+    ) } else {
+      return (
+        <div className="form__row">
+        <div className="form__message form__message--success">
+          Thanks! We have received your submission succesfully.
+        </div>
+        </div>
+      )
+    }
   }
