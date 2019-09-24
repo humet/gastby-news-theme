@@ -93,7 +93,6 @@ class SponsoredPosts extends React.Component {
 
   _onChange = (isVisible, url, location, creativeNumber) => {
     const encLocation = encodeURI(location.href)
-    console.log(encLocation)
     if (isVisible) {
       fetch(url + "&referer=" + encLocation + "&p[]=" + creativeNumber)
     }

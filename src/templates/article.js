@@ -3,12 +3,12 @@ import { DFPSlotsProvider, AdSlot } from "react-dfp"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import { FacebookProvider, Comments } from 'react-facebook';
 
 import Layout from "../components/layout"
 import Categories from "../components/categories"
 import SEO from "../components/seo"
 import SponsoredPosts from "../components/sponsoredposts"
+import FacebookComments from "../components/facebookcomments"
 //import PopPosts from "../hooks/getPopPosts"
 
 import ThemeStyles from "../styles/theme.js"
@@ -108,9 +108,8 @@ export const ArticleTemplate = ({
                 __html: content,
               }}
             />
-          <FacebookProvider appId="123456789">
-            <Comments href="http://www.fulltimedevils.com" />
-          </FacebookProvider>
+            <h2>What do you think?</h2>
+          <FacebookComments />
           </div>
           <aside className="col-4 hideMobile">
             <DFPSlotsProvider dfpNetworkId="21685689509">
