@@ -20,6 +20,7 @@ export default function ContactAuthor(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setState({...state,[e.target.elements[2].name]: e.target.elements[2].value})
     const form = e.target
     fetch('/', {
       method: 'POST',
