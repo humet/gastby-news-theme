@@ -25,7 +25,7 @@ export const ArticleTemplate = ({
 }) => {
   return (
     <div>
-      <DFPSlotsProvider dfpNetworkId="21685689509">
+      <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
         <div className="desktop-ads">
           <AdSlot sizes={[[300, 250]]} adUnit="article_page_atf" />
         </div>
@@ -114,7 +114,7 @@ export const ArticleTemplate = ({
           <FacebookComments />
           </div>
           <aside className="col-4 hideMobile">
-            <DFPSlotsProvider dfpNetworkId="21685689509">
+            <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
               <div className="desktop-ads">
                 <AdSlot
                   sizes={[[300, 600], [300, 250]]}
