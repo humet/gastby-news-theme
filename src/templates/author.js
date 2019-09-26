@@ -17,7 +17,7 @@ const AuthorTemplate = props => {
   const { data } = props
   const { authored_wordpress__POST, name } = data.wordpressWpUsers
   const title = `Posts by ${name}`
-  const avatar_url = data.wordpressWpUsers.avatar_urls.wordpress_96
+  const avatar_url = ( data.wordpressWpUsers.avatar_urls.wordpress_96 ? data.wordpressWpUsers.avatar_urls.wordpress_96.source_url : null)
   const description = data.wordpressWpUsers.description
   let { jobtitle, instagram, twitter } = ""
 
@@ -74,6 +74,7 @@ const AuthorTemplate = props => {
     <Layout>
       <SEO title={name} />
       <section className="author">
+        { avatar_url ? (
         <img
           src={avatar_url}
           alt={name}
@@ -81,6 +82,7 @@ const AuthorTemplate = props => {
           width="60px"
           height="60px"
         />
+        ) : null}
         <h1
           style={{
             textTransform: "uppercase",
@@ -116,7 +118,9 @@ export const pageQuery = graphql`
     wordpressWpUsers(id: { eq: $id }) {
       name
       avatar_urls {
-        wordpress_96
+        wordpress_96 {
+          source_url
+        }
       }
       description
       authored_wordpress__POST {

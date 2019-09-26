@@ -28,6 +28,7 @@
     "gatsby-source-google-analytics-reporting-api": "^1.0.2",
     "gatsby-source-wordpress": "^3.1.28",
     "gatsby-transformer-sharp": "^2.2.13",
+    "googleapis": "^43.0.0",
     "he": "^1.2.0",
     "netlify-lambda": "^1.6.3",
     "node-sass": "^4.12.0",

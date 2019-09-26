@@ -35,7 +35,7 @@ module.exports = {
       options: {
         email: process.env.CLIENT_EMAIL,
         key: googleApiKey,
-        viewId: `134027711`,
+        viewId: `201141234`,
         startDate: '7daysAgo',
       }
     },

@@ -8,7 +8,7 @@ import "./article-preview.scss"
 
 import NoImage from "../images/NoImage.png"
 
-export default ({ article }) => (
+export default ({ article, noExcerpt }) => (
   <article style={{ position: `relative` }} className="articlepreview">
     <Link to={`/${article.slug}/`}>
       {article.featured_media &&
@@ -44,13 +44,15 @@ export default ({ article }) => (
             <span dangerouslySetInnerHTML={{ __html: article.title }} />
           </Link>
         </h3>
+        {!noExcerpt &&
         <div
           dangerouslySetInnerHTML={{
             __html: `${article.excerpt.slice(0, 90)}...`,
           }}
         />
+        }
+        <small><strong>{article.date}</strong></small>
       </div>
     </div>
-    <small>{article.publishDate}</small>
   </article>
 )

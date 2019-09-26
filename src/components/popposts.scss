@@ -1,0 +1,13 @@
+.popposts {
+  list-style-type: none;
+  margin: 0;
+
+  li {
+    margin-bottom: 0;
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  }
+}

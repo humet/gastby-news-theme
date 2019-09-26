@@ -9,7 +9,7 @@ import Categories from "../components/categories"
 import SEO from "../components/seo"
 import SponsoredPosts from "../components/sponsoredposts"
 import FacebookComments from "../components/facebookcomments"
-//import PopPosts from "../hooks/getPopPosts"
+import PopPosts from "../components/popposts"
 
 import ThemeStyles from "../styles/theme.js"
 import "./article.scss"
@@ -58,15 +58,17 @@ export const ArticleTemplate = ({
                   margin: "15px 0",
                 }}
               >
+                {author.avatar_urls.wordpress_96 ? (
                 <div style={{ marginRight: "10px" }}>
                   <img
                     style={{ borderRadius: `60px` }}
                     width="60px"
                     height="60px"
                     alt={author.name}
-                    src={author.avatar_urls.wordpress_96}
+                    src={author.avatar_urls.wordpress_96.source_url}
                   />
                 </div>
+                ) : null}
                 <div>
                   <Link
                     to={`/author/${author.slug}/`}
@@ -120,6 +122,7 @@ export const ArticleTemplate = ({
                 />
               </div>
             </DFPSlotsProvider>
+            <PopPosts />
           </aside>
         </div>
       </section>
@@ -214,7 +217,9 @@ export const pageQuery = graphql`
         name
         slug
         avatar_urls {
-          wordpress_96
+          wordpress_96 {
+            source_url
+          }
         }
       }
       featured_media {
