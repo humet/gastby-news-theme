@@ -128,15 +128,15 @@ export const ArticleTemplate = ({
             />
               <div className="ad desktop-ads">
                 <AdSlot
-                  sizes={[[300, 350], [336, 280]]}
+                  sizes={[[300, 250], [336, 280]]}
                   sizeMapping={[{ viewport: [0, 0], sizes: [] },
-                                { viewport: [768, 0], sizes: [[300, 350], [336, 280]] }]}
+                                { viewport: [768, 0], sizes: [[300, 250], [336, 280]] }]}
                   adUnit="ftd_article_end_desktop"
                 />
               </div>
               <div className="ad mobile-ads">
                 <AdSlot
-                  sizes={[[300, 350], [336, 280]]}
+                  sizes={[[300, 250], [336, 280]]}
                   sizeMapping={[{ viewport: [0, 0], sizes: [[300, 250], [336, 280]] },
                                 { viewport: [768, 0], sizes: [] }]}
                   adUnit="ftd_article_end_mobile"
@@ -151,7 +151,7 @@ export const ArticleTemplate = ({
                 <AdSlot
                   sizes={[[300, 600], [336, 280], [300, 250]]}
                   sizeMapping={[{ viewport: [0, 0], sizes: [] },
-                                { viewport: [768, 0], sizes: [[300, 350], [336, 280]] }]}
+                                { viewport: [768, 0], sizes: [[300, 600], [300, 250], [336, 280]] }]}
                   adUnit="ftd_top_of_sidebar_desktop"
                 />
               </div>
