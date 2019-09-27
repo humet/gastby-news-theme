@@ -17,7 +17,9 @@ const AuthorTemplate = props => {
   const { data } = props
   const { authored_wordpress__POST, name } = data.wordpressWpUsers
   const title = `Posts by ${name}`
-  const avatar_url = ( data.wordpressWpUsers.avatar_urls.wordpress_96 ? data.wordpressWpUsers.avatar_urls.wordpress_96.source_url : null)
+  const avatar_url = data.wordpressWpUsers.avatar_urls.wordpress_96
+    ? data.wordpressWpUsers.avatar_urls.wordpress_96.source_url
+    : null
   const description = data.wordpressWpUsers.description
   let { jobtitle, instagram, twitter } = ""
 
@@ -74,14 +76,14 @@ const AuthorTemplate = props => {
     <Layout>
       <SEO title={name} />
       <section className="author">
-        { avatar_url ? (
-        <img
-          src={avatar_url}
-          alt={name}
-          style={{ borderRadius: `60px` }}
-          width="60px"
-          height="60px"
-        />
+        {avatar_url ? (
+          <img
+            src={avatar_url}
+            alt={name}
+            style={{ borderRadius: `60px` }}
+            width="60px"
+            height="60px"
+          />
         ) : null}
         <h1
           style={{

@@ -22,3 +22,25 @@
         }
     }
 }
+
+.ads-atf {
+    padding-top: 15px;
+}
+
+.ad {
+    margin: 0 auto 15px;
+
+    &.desktop-ads {
+        display: none;
+    }
+
+    @include breakpoint(md) {
+        &.desktop-ads {
+            display: block;
+        }
+
+        &.mobile-ads {
+            display: none;
+        }
+    }
+}

@@ -26,9 +26,20 @@ export const ArticleTemplate = ({
   return (
     <div>
       <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
-        <div className="desktop-ads">
-          <AdSlot sizes={[[300, 250]]} adUnit="article_page_atf" />
+      <div className="ads-atf">
+        <div className="ad desktop-ads">
+          <AdSlot
+            sizes={[[970, 250], [970, 90], [728, 90]]}
+            adUnit="ftd_atf_leaderboard_desktop"
+          />
         </div>
+        <div className="ad mobile-ads">
+          <AdSlot
+            sizes={[[300, 250], [336, 280]]}
+            adUnit="ftd_atf_leaderboard_mobile"
+          />
+        </div>
+      </div>
       </DFPSlotsProvider>
       <section className="entry-content">
         <div className="meta">
@@ -59,15 +70,15 @@ export const ArticleTemplate = ({
                 }}
               >
                 {author.avatar_urls.wordpress_96 ? (
-                <div style={{ marginRight: "10px" }}>
-                  <img
-                    style={{ borderRadius: `60px` }}
-                    width="60px"
-                    height="60px"
-                    alt={author.name}
-                    src={author.avatar_urls.wordpress_96.source_url}
-                  />
-                </div>
+                  <div style={{ marginRight: "10px" }}>
+                    <img
+                      style={{ borderRadius: `60px` }}
+                      width="60px"
+                      height="60px"
+                      alt={author.name}
+                      src={author.avatar_urls.wordpress_96.source_url}
+                    />
+                  </div>
                 ) : null}
                 <div>
                   <Link
@@ -110,19 +121,35 @@ export const ArticleTemplate = ({
                 __html: content,
               }}
             />
+            <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
+              <div className="ad desktop-ads">
+                <AdSlot
+                  sizes={[[300, 350], [336, 280]]}
+                  adUnit="ftd_article_end_desktop"
+                />
+              </div>
+              <div className="ad mobile-ads">
+                <AdSlot
+                  sizes={[[300, 350], [336, 280]]}
+                  adUnit="ftd_article_end_mobile"
+                />
+              </div>
+            </DFPSlotsProvider>
             <h2>What do you think?</h2>
-          <FacebookComments />
+            <FacebookComments />
           </div>
           <aside className="col-4 hideMobile">
+            <div style={{position: `sticky`, top: 0}}>
             <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
-              <div className="desktop-ads">
+              <div className="ad desktop-ads">
                 <AdSlot
-                  sizes={[[300, 600], [300, 250]]}
-                  adUnit="article_page_sidebar"
+                  sizes={[[300, 600], [336, 280], [300, 250]]}
+                  adUnit="ftd_top_of_sidebar_desktop"
                 />
               </div>
             </DFPSlotsProvider>
             <PopPosts />
+            </div>
           </aside>
         </div>
       </section>

@@ -28,7 +28,8 @@ function SEO({ description, article, title, image, author, pathname }) {
     `
   )
 
-  const metaDescription = he.decode(description) || site.siteMetadata.description
+  const metaDescription =
+    he.decode(description) || site.siteMetadata.description
   const metaImage = image || site.siteMetadata.image
   const twitterAuthor = author || site.siteMetadata.author
   const url = `${site.siteMetadata.siteUrl}/${pathname || "/"}`

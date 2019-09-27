@@ -44,14 +44,16 @@ export default ({ article, noExcerpt }) => (
             <span dangerouslySetInnerHTML={{ __html: article.title }} />
           </Link>
         </h3>
-        {!noExcerpt &&
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${article.excerpt.slice(0, 90)}...`,
-          }}
-        />
-        }
-        <small><strong>{article.date}</strong></small>
+        {!noExcerpt && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${article.excerpt.slice(0, 90)}...`,
+            }}
+          />
+        )}
+        <small>
+          <strong>{article.date}</strong>
+        </small>
       </div>
     </div>
   </article>
