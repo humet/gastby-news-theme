@@ -35,7 +35,7 @@
         display: none;
     }
 
-    @include breakpoint(md) {
+    @include breakpoint(sm) {
         &.desktop-ads {
             display: block;
         }

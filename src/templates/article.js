@@ -24,23 +24,25 @@ export const ArticleTemplate = ({
   featuredimage,
 }) => {
   return (
-    <div>
-      <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
+    <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs lazyLoad={{ fetchMarginPercent: 200, renderMarginPercent: 100, mobileScaling: 2.0 }}>
       <div className="ads-atf">
         <div className="ad desktop-ads">
           <AdSlot
             sizes={[[970, 250], [970, 90], [728, 90]]}
+            sizeMapping={[{ viewport: [767, 0], sizes: [[0, 0]] },
+                          { viewport: [970, 0], sizes: [[728, 90]] },
+                          { viewport: [2500, 0], sizes: [[970, 250], [970, 90], [728, 90]] }]}
             adUnit="ftd_atf_leaderboard_desktop"
           />
         </div>
         <div className="ad mobile-ads">
           <AdSlot
             sizes={[[300, 250], [336, 280]]}
+            sizeMapping={[{ viewport: [767, 0], sizes: [[300, 250], [336, 280]] }]}
             adUnit="ftd_atf_leaderboard_mobile"
           />
         </div>
       </div>
-      </DFPSlotsProvider>
       <section className="entry-content">
         <div className="meta">
           {categories && categories.length ? (
@@ -121,40 +123,41 @@ export const ArticleTemplate = ({
                 __html: content,
               }}
             />
-            <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
               <div className="ad desktop-ads">
                 <AdSlot
                   sizes={[[300, 350], [336, 280]]}
+                  sizeMapping={[{ viewport: [767, 0], sizes: [[0, 0]] },
+                                { viewport: [2500, 0], sizes: [[300, 350], [336, 280]] }]}
                   adUnit="ftd_article_end_desktop"
                 />
               </div>
               <div className="ad mobile-ads">
                 <AdSlot
                   sizes={[[300, 350], [336, 280]]}
+                  sizeMapping={[{ viewport: [767, 0], sizes: [[300, 250], [336, 280]] }]}
                   adUnit="ftd_article_end_mobile"
                 />
               </div>
-            </DFPSlotsProvider>
             <h2>What do you think?</h2>
             <FacebookComments />
           </div>
           <aside className="col-4 hideMobile">
             <div className="sidebar">
-            <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
               <div className="ad desktop-ads">
                 <AdSlot
                   sizes={[[300, 600], [336, 280], [300, 250]]}
+                  sizeMapping={[{ viewport: [767, 0], sizes: [[0, 0]] },
+                                { viewport: [2500, 0], sizes: [[300, 600], [336, 280], [300, 250]] }]}
                   adUnit="ftd_top_of_sidebar_desktop"
                 />
               </div>
-            </DFPSlotsProvider>
             <PopPosts />
             </div>
           </aside>
         </div>
       </section>
       <SponsoredPosts />
-    </div>
+    </DFPSlotsProvider>
   )
 }
 
