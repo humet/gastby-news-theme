@@ -23,6 +23,30 @@ export const ArticleTemplate = ({
   author,
   featuredimage,
 }) => {
+
+  /**
+   * Add mid-content ad to after 2nd paragraph
+   */
+  let splitContent = content.match(/<p>.*?<\/p>/g)
+  //let splitContent = content.split(/<p>|<\/p>/gm)
+  const outStreamAd = <AdSlot sizes={[[1, 1]]} adUnit="ftd_outstream" />
+  if(splitContent.length > 1) {
+    splitContent.splice( 1, 0, outStreamAd)
+  }
+  
+  let finalContent = splitContent.map(content => {
+    if(content.type === AdSlot) {
+      return content
+    } else {
+      let cleanContent = content.replace(/<p>|<\/p>/gm, "")
+      return <p
+      dangerouslySetInnerHTML={{
+        __html: cleanContent,
+      }}
+    />
+    }
+  })
+
   return (
     <DFPSlotsProvider 
       dfpNetworkId="21685689509" 
@@ -120,12 +144,7 @@ export const ArticleTemplate = ({
                 ) : null}
               </div>
             ) : null}
-
-            <div
-              dangerouslySetInnerHTML={{
-                __html: content,
-              }}
-            />
+              {finalContent}
               <div className="ad desktop-ads">
                 <AdSlot
                   sizes={[[300, 250], [336, 280]]}
