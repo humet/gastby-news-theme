@@ -27,7 +27,8 @@ export const ArticleTemplate = ({
   /**
    * Add mid-content ad to after 2nd paragraph
    */
-  let splitContent = content.match(/<p>.*?<\/p>/g)
+  console.log(content)
+  let splitContent = content.match(/<p>.*?<\/p>/gis)
   //let splitContent = content.split(/<p>|<\/p>/gm)
   const outStreamAd = <AdSlot sizes={[[1, 1]]} adUnit="ftd_outstream" />
   if(splitContent.length > 1) {
