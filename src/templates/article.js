@@ -139,7 +139,7 @@ export const ArticleTemplate = ({
             <FacebookComments />
           </div>
           <aside className="col-4 hideMobile">
-            <div style={{position: `sticky`, top: 0}}>
+            <div className="sidebar">
             <DFPSlotsProvider dfpNetworkId="21685689509" collapseEmptyDivs>
               <div className="ad desktop-ads">
                 <AdSlot

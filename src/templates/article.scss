@@ -29,6 +29,7 @@
 
 .ad {
     margin: 0 auto 15px;
+    text-align: center;
 
     &.desktop-ads {
         display: none;
@@ -43,4 +44,9 @@
             display: none;
         }
     }
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
 }

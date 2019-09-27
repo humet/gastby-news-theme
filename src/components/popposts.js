@@ -25,7 +25,7 @@ export default () => (
       render={data => (
         <ul className="popposts">
           {data.allWordpressPost.edges.map(post => (
-            <li key={post.node.id}>
+            <li key={post.node.slug}>
               <ArticlePreview article={post.node} noExcerpt />
             </li>
           ))}

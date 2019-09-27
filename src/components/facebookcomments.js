@@ -26,7 +26,6 @@ class FacebookComments extends React.Component {
 
   componentDidMount = () => {
     this.timer = setInterval(this.subscribeToFBEvent, 300)
-    console.log(this.props)
   }
 
   componentWillUnmount() {
