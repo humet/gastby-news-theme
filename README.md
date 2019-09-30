@@ -4,7 +4,19 @@
 
 ## 🚀 Quick start
 
-1.  **Start developing.**
+1.  **Configuration.**
+    Copy sample.env to .env.development and .env.production files in the local root directory
+    Fill in blanks
+
+    | Variable       | Description                                                                                     |
+    |----------------|-------------------------------------------------------------------------------------------------|
+    | CLIENT_EMAIL   | This is your client email address from Google Analytics API                                     |
+    | GOOGLE_API_KEY | The is the Google Analytics API Key                                                             |
+    | DEPLOY_ENV     | This can either be lbn_published_stage or lbn_published_production depending on the environment |
+
+    You also need to add these to the Netlify environment variables before deploying to staging or production. See below.
+
+2.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
@@ -66,6 +78,4 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 - **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+## 💫 Set up Netlify
