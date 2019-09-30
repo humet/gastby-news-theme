@@ -11,6 +11,8 @@ const googleApiKey = process.env.GOOGLE_API_KEY.replace(new RegExp("\\\\n", "\g"
  * 
  */
 
+ const wordpressApiUrl = `fulltimedevils.wpengine.com`
+
  /**
   * SEO
   */
@@ -48,7 +50,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "fulltimedevils.wpengine.com",
+        baseUrl: wordpressApiUrl,
         protocol: "https",
         hostingWPCOM: false,
         verboseOutput: false,
