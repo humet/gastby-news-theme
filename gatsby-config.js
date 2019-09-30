@@ -4,13 +4,45 @@ require("dotenv").config({
 
 const googleApiKey = process.env.GOOGLE_API_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
 
+/**
+ * --- CONFIG VARIABLES ---
+ * 
+ * Fill out these for your own set up
+ * 
+ */
+
+ /**
+  * SEO
+  */
+ const siteTitle = `Full Time Devils`
+ const siteShortTitle = `FTD`
+ const siteDescription = `The World's Biggest Unoffical Manchester United Fan Channel`
+ const siteUrl = `https://www.fulltimedevils.com` // No trailing slash
+ const siteAuthor = `fulltimedevils` // This is a Twitter account. No @ symbol
+ const siteImage = `/static/images/facebookopengraph.jpg` // Used for the default Facebook Open Graph image
+
+ /**
+  * Google Config
+  */
+ const googleTagManageId = `GTM-NJN3HTT`
+ const googleAnalyticsViewId = `201141234`
+
+ /**
+  * Iubenda
+  */
+ const iubendaConfig = {"lang":"en","siteId":1662385,"enableCMP":true,"googleAdsPreferenceManagement":true,"cookiePolicyId":20096630, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center" }}
+
+ /**
+ * --- END CONFIG VARIABLES ---
+ */
+
 module.exports = {
   siteMetadata: {
-    title: `Full Time Devils`,
-    description: `The World's Biggest Unoffical Manchester United Fan Channel`,
-    siteUrl: `https://www.fulltimedevils.com`, // No trailing slash
-    author: `fulltimedevils`, // No @ symbol
-    image: `/static/images/facebookopengraph.jpg` 
+    title: siteTitle,
+    description: siteDescription,
+    siteUrl: siteUrl,
+    author: siteAuthor,
+    image: siteImage,
   },
   plugins: [
     {
@@ -26,7 +58,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: "GTM-NJN3HTT",
+        id: googleTagManageId,
         includeInDevelopment: false,
       },
     },
@@ -35,7 +67,7 @@ module.exports = {
       options: {
         email: process.env.CLIENT_EMAIL,
         key: googleApiKey,
-        viewId: `201141234`,
+        viewId: googleAnalyticsViewId,
         startDate: '7daysAgo',
       }
     },
@@ -64,15 +96,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-iubenda-cookie-footer',
       options: {
-      iubendaOptions: {"lang":"en","siteId":1662385,"enableCMP":true,"googleAdsPreferenceManagement":true,"cookiePolicyId":20096630, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center" }}},
-      // optional, if present, a Google Tag Manager event ("iubenda_consent_given") is triggered
-      googleTagManagerOptions: true
+        iubendaOptions: iubendaConfig,
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Full Time Devils`,
-        short_name: `FTD`,
+        name: siteTitle,
+        short_name: siteShortTitle,
         start_url: `/`,
         background_color: `#FFFFFF`,
         theme_color: `#D83027`,
